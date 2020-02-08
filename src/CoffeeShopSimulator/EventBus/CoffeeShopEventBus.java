@@ -1,10 +1,14 @@
 package CoffeeShopSimulator.EventBus;
 
+import CoffeeShopSimulator.CoffeeShop;
 import CoffeeShopSimulator.EventBus.Events.CustomerLeavesEvent;
 import CoffeeShopSimulator.EventBus.Events.NewCustomerWalksInEvent;
 import CoffeeShopSimulator.Models.Person;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
+
+import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * This is a Guava Event Bus wrapper.
@@ -28,12 +32,31 @@ public class CoffeeShopEventBus {
         eventBus.post(e);
     }
 
+    /**
+     * Handles the addition of new customers to the coffee shop
+     * @param e the event to listen for
+     */
+    @Subscribe
+    public void handleNewCustomer(NewCustomerWalksInEvent e) {
+        CoffeeShop.Logger.Log(e.getCustomer().getName() + " arrived!");
+        addPersonToCoffeeShop(e.getCustomer());
+    }
+
+    /**
+     * Handles the removal of customers from the coffee shop
+     * @param e the event to listen for
+     */
+    @Subscribe
+    public void handleCustomerLeaving(CustomerLeavesEvent e) {
+        CoffeeShop.Logger.Log(e.getCustomer().getName() + " left!");
+        removePersonFromCoffeeShop(e.getCustomer());
+    }
 
     /**
      * Adds a person to the coffee shop so that they can also listen for events
      * @param person the person to add to the coffee shop
      */
-    public void addPersonToCoffeeShop(Person person) {
+    private void addPersonToCoffeeShop(Person person) {
         eventBus.register(person);
     }
 
@@ -41,7 +64,7 @@ public class CoffeeShopEventBus {
      * Removes a person from the coffee shop so that the are no longer listening for events
      * @param person the person to remove from the coffee shop
      */
-    public void removePersonFromCoffeeShop(Person person) {
+    private void removePersonFromCoffeeShop(Person person) {
         eventBus.unregister(person);
     }
 }
