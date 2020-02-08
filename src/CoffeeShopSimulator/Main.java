@@ -1,8 +1,10 @@
 package CoffeeShopSimulator;
 
-public class Main {
+import com.google.common.eventbus.EventBus;
 
+public class Main {
     public static void main(String[] args) {
-	    System.out.println("hello");
+        CoffeeShop coffeeShop = new CoffeeShop();
+        coffeeShop.start();
     }
 }
