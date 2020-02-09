@@ -9,7 +9,6 @@ package CoffeeShopSimulator.EventBus.Events;
 public abstract class CoffeeShopEvent {
     private final String type;
 
-
     public CoffeeShopEvent(String type) {
         this.type = type;
     }
