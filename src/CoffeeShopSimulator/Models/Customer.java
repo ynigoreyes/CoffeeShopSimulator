@@ -5,6 +5,7 @@ public class Customer extends Person {
         super(name);
     }
 
+    @Override
     public String toString(){
         return super.toString() + "(a Customer)";
     }
