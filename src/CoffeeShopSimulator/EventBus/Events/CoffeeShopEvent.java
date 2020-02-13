@@ -16,4 +16,6 @@ public abstract class CoffeeShopEvent {
     public String getType() {
         return type;
     }
+
+    public abstract boolean validateEvent(Object data);
 }
