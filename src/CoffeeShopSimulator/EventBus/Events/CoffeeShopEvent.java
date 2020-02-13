@@ -17,5 +17,5 @@ public abstract class CoffeeShopEvent {
         return type;
     }
 
-    public abstract boolean validateEvent(Object data);
+    public abstract boolean validateEvent(Object... data);
 }
