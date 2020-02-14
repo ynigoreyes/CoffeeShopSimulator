@@ -15,8 +15,11 @@ public class Shop{
     }
 
     public void newCustomerWalksIn(Guest g){
+        if(customers.contains(g))
+            System.out.println("*This customer is already here*\n");
+
         customers.add(g);
-        System.out.println("Barista: Hello! Welcome to our shop!");
+        System.out.println("Barista: Hello! Welcome to our shop!\n");
     }
 
 
