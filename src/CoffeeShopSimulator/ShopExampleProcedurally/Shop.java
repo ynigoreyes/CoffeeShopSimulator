@@ -6,16 +6,16 @@ public class Shop{
 
     private Boss manager;
     private Employee barista;
-    private ArrayList<Guest> customer;
+    private ArrayList<Guest> customers;
 
     public Shop(Boss b, Employee e){
         manager = b;
         barista = e;
-        customer = new ArrayList<>();
+        customers = new ArrayList<>();
     }
 
     public void newCustomerWalksIn(Guest g){
-        customer.add(g);
+        customers.add(g);
         System.out.println("Barista: Hello! Welcome to our shop!");
     }
 
