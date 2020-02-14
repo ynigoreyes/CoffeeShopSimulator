@@ -22,4 +22,4 @@ Given that the customer has money to buy something from the menu, the customer w
 Given that the customer has a pending order and the barista has properly processed the payment, the customer will wait for their name to be called, signalling their order is ready to get picked up. The customer will then pick up their order and the order is complete. This use case is to be completed by Miggy.
 
 * __Make Order__ 
-Given that a customer has successfully placed on order for products off the menu through the barista, and all payments for items have been approved, the items on the menu will go on a list of uncompleted orders. The barista will look at the list of these uncompleted orders and make the items accordingly. This use case is to be completed by Emily 
+Given that a customer has successfully placed on order for products off the menu through the barista, and all payments for items have been approved, the items on the menu will go on a list of uncompleted orders. The barista will look at the list of these uncompleted orders and make the items accordingly. This use case is to be completed by Emily.
