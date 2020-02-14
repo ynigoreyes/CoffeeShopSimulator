@@ -14,4 +14,10 @@ public class Shop{
         customer = new ArrayList<>();
     }
 
+    public void newCustomerWalksIn(Guest g){
+        customer.add(g);
+        System.out.println("Barista: Hello! Welcome to our shop!");
+    }
+
+
 }
