@@ -22,5 +22,12 @@ public class Shop{
         System.out.println("Barista: Hello! Welcome to our shop!\n");
     }
 
+    public void customerLeaves(Guest g){
+        if( !customers.contains(g) )
+            System.out.println("*That customer isn't here!*\n");
+
+        System.out.println("Barista: Ok! Goodbye. Have a great day!\n");
+    }
+
 
 }
