@@ -11,10 +11,10 @@ public class Boss{
 		this.name = name;
 	}
 
-	public double PayEmployee(int Orders) // Based on Orders Served Pays Employee 50c on the Order
+	public void PayEmployee(int Orders) // Based on Orders Served Pays Employee 50c on the Order
 	{
 		double pay = Orders * .50;
-		return pay;
+		System.out.println("*Boss has paid Employee " + pay +  "*");
 	}
 
 	public String[] NextMenu()	// Alternates Menu Between 3 Pre-Determined Menus Randomly
