@@ -29,5 +29,29 @@ public class Shop{
         System.out.println("Barista: Ok! Goodbye. Have a great day!\n");
     }
 
+    public void customerOrders(Guest g){
+
+    }
+
+    public void customerPickUp(Guest g){
+
+    }
+
+    public void employeeMakesAllOrders(){
+
+    }
+
+    public void employeeServesOrders(){
+        
+    }
+
+    public void bossChangesMenu(){
+
+    }
+
+    public void bossPaysEmployee(){
+
+    }
+
 
 }
