@@ -50,7 +50,9 @@ public class Shop{
     }
 
     public void bossPaysEmployee(){
-
+        int employeeOrderCount = barista.getOrderCount();
+        manager.PayEmployee(employeeOrderCount);
+        barista.resetOrderCount();
     }
 
 
