@@ -4,11 +4,14 @@
 Through the use of various use cases, we plan to implement a simulated coffee shop using Java that allows for a number of customers to enter the coffee shop and place an order with the barista currently working. After taking the order from the customer, the Barista will make the items the customer orders, then serve the ordered items to the customer by calling out their name. The manager will overlook the coffee shop by occasionally changing the items that can be ordered off the menu, and will keep track of the number of hours the barista has worked so that they may pay them accordingly.
 
 #### Potential Users
-Customer: The customer is anyone who enters the coffee shop and wants to order a drink from a barista off the menu that is set by the manager. This contains the use cases order and pick up.
+* __Customer__ 
+The customer is anyone who enters the coffee shop and wants to order a drink from a barista off the menu that is set by the manager. This contains the use cases order and pick up.
 
-Barista: While working, the barista will take orders from customers, next they will make the items the customer orders off the menu, and serve the customer their ordered items by calling their name. The barista will be paid by the manager based on the number of hours they worked. This contains the use cases make order and serve.
+* __Barista__ 
+While working, the barista will take orders from customers, next they will make the items the customer orders off the menu, and serve the customer their ordered items by calling their name. The barista will be paid by the manager based on the number of hours they worked. This contains the use cases make order and serve.
 
-Manager: The manager overlooks the entire coffee shop by making sure that the barista’s are being paid properly based on the number of hours they worked, and occasionally changing items on the menu that can be ordered by customers.. This contains the use cases pay employee and change menu.
+* __Manager__ 
+The manager overlooks the entire coffee shop by making sure that the barista’s are being paid properly based on the number of hours they worked, and occasionally changing items on the menu that can be ordered by customers.. This contains the use cases pay employee and change menu.
 
 #### Use Cases
 
