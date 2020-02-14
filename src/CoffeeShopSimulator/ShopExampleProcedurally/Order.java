@@ -1,10 +1,10 @@
 package CoffeeShopSimulator.ShopExampleProcedurally;
 
 public class Order {
-    String guestName;
+    Guest guest;
     String order;
-    public Order(String name, String order){
-        guestName = name;
-        order = order;
+    public Order(Guest guest, String order){
+        this.guest = guest;
+        this.order = order;
     }
 }
