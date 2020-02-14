@@ -39,7 +39,7 @@ public class CoffeeShopEventBus {
      */
     @Subscribe
     public void handleNewCustomer(NewCustomerWalksInEvent e) {
-        logger.Log(e.getCustomer().getName() + " arrived!");
+        logger.Log(e.getCustomer() + " arrived!");
         addPersonToCoffeeShop(e.getCustomer());
     }
 
@@ -50,7 +50,7 @@ public class CoffeeShopEventBus {
      */
     @Subscribe
     public void handleCustomerLeaving(CustomerLeavesEvent e) {
-        logger.Log(e.getCustomer().getName() + " left!");
+        logger.Log(e.getCustomer() + " left!");
         removePersonFromCoffeeShop(e.getCustomer());
     }
 
