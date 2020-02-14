@@ -7,8 +7,17 @@ package CoffeeShopSimulator.ShopExampleProcedurally;
 
 public class Employee{
 
+    public class Order {
+        String guestName;
+        String order;
+        public Order(String name, String order){
+            guestName = name;
+            order = order;
+        }
+    }
+
     private String name;
-    private Queue<String[2]> orders = new LinkedList<>();
+    private Queue<Order> orders = new LinkedList<>();
     private <String> orderPutOut = new ArrayList<>();
 
     public Employee(String name){
@@ -16,7 +25,7 @@ public class Employee{
     }
 
     // take coustomer order
-    public void takeOrder(String[2] order){
+    public void takeOrder(Order order){
         //order is an array of size 2 the first element is the coustomer name the 2nd is their order
         orders.add(order);
     }
@@ -32,8 +41,8 @@ public class Employee{
     }
 
     // coustomer picks up order and is removed from orderPutOut
-    public void pickup(order){
-        orderPutOut.remove(order)
+    public void pickup(Order order){
+        orderPutOut.remove(order);
     }
 
 }
