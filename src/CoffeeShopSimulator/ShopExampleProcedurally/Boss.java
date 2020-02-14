@@ -1,12 +1,10 @@
 package CoffeeShopSimulator.ShopExampleProcedurally;
+import java.util.Random;
 
 public class Boss{
 
 	private String name;
-	private Hashtable Supplies = new HashTable();
-	private String[] Menu1 = {"Mocha", "Frappe", "Latte", "Coffee"};
-	private String[] Menu2 = {"Machiato", "Latte", "Coffee"};
-	private String[] Menu3 = {"Mocha", "Frappe", "Latte"};
+	private Random random = new Random();	// Random Number Generator
 
 	public Boss(String name)
 	{
@@ -19,4 +17,20 @@ public class Boss{
 		return pay;
 	}
 
+	public String[] NextMenu()	// Alternates Menu Between 3 Pre-Determined Menus Randomly
+	{
+		int num = random.nextInt(3);
+		String[] Current = {};
+		String[] Menu1 = {"Mocha", "Frappe", "Latte", "Coffee"};
+		String[] Menu2 = {"Machiato", "Latte", "Coffee"};
+		String[] Menu3 = {"Mocha", "Frappe", "Latte"};
+
+		switch(num)
+		{
+			case 0: Current = Menu1;
+			case 1: Current = Menu2;
+			case 2: Current = Menu3;
+		}
+		return Current;
+	}
 }
