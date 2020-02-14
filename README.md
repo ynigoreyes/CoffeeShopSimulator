@@ -1,10 +1,10 @@
 # User Document
 
 #### Project Goal
->> Copy from word doc here
+> Copy from word doc here
 
 #### Potential Users
->> Copy from word doc here
+> Copy from word doc here
 
 #### Use Cases
 
