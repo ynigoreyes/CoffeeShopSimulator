@@ -29,3 +29,6 @@ Given the customers orders have been completed in full by the barista, the baris
 
 * __Pay Employee__
 When the barista arrives to work that day, they will clock in for their shift at the coffee shop. The manager will work to keep track of the hours that the barista has been working so that they can pay the barista accordingly. The manager will also decide the hourly rate the barista will receive for working.
+
+* __Change Menu__
+Along with paying the barista working, the manager will decide what items will be available on the menu for customers to order. The manager has the ability to change the menu as frequently as necessary.
