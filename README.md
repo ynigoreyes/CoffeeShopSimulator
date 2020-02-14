@@ -14,3 +14,6 @@ Given that the customer has money to buy something from the menu, the customer w
 
 * __Picking Up Orders__
 Given that the customer has a pending order and the barista has properly processed the payment, the customer will wait for their name to be called, signalling their order is ready to get picked up. The customer will then pick up their order and the order is complete.
+
+* __Change Menu__
+Along with paying the barista working, the manager will decide what items will be available on the menu for customers to order. The manager has the ability to change the menu as frequently as necessary.
