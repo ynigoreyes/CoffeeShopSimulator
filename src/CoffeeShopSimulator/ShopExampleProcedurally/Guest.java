@@ -3,11 +3,14 @@ package CoffeeShopSimulator.ShopExampleProcedurally;
 public class Guest{
 
     private String name;
-    String getName, getReceipt, orderProducts;
+    String getReceipt, menuItem;
 
     public Guest(String name){
         this.name = name;
 
-        System.out.print("My name for this order is" + getName);
+        System.out.println("My name for this order is " + name + ".");
+        System.out.println("I would like " + menuItem + "please!");
+        
+
     }
 }
