@@ -27,3 +27,5 @@ Given that a customer has successfully placed on order for products off the menu
 * __Serve__
 Given the customers orders have been completed in full by the barista, the barista will gather all items in a customers order and check the name on the order. After doing so the barista will call out the customers name to signal that their order is completed and ready to be picked up.
 
+* __Pay Employee__
+When the barista arrives to work that day, they will clock in for their shift at the coffee shop. The manager will work to keep track of the hours that the barista has been working so that they can pay the barista accordingly. The manager will also decide the hourly rate the barista will receive for working.
