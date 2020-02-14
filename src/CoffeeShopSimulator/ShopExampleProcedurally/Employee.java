@@ -1,5 +1,7 @@
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.ArrayList;
+import java.util.List;
 
 package CoffeeShopSimulator.ShopExampleProcedurally;
 
@@ -7,7 +9,7 @@ public class Employee{
 
     private String name;
     private Queue<String[2]> orders = new LinkedList<>();
-    private Queue<String> served = new LinkedList<>();
+    private <String> orderPutOut = new ArrayList<>();
 
     public Employee(String name){
         this.name = name;
@@ -22,11 +24,16 @@ public class Employee{
     // make and call order
     public void makeNextOrder(){
         //add order to ___ for pickup
-        served.add(orders.head);
+        orderPutOut.add(orders.head);
         //
         System.out.println("I have an order for " + orders.head[0]);
         //remove order from orders
         orders.remove();
+    }
+
+    // coustomer picks up order and is removed from orderPutOut
+    public void pickup(order){
+        orderPutOut.remove(order)
     }
 
 }
