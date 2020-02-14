@@ -1,7 +1,7 @@
 # User Document
 
 #### Project Goal
-> Copy from word doc here
+Through the use of various use cases, we plan to implement a simulated coffee shop using Java that allows for a number of customers to enter the coffee shop and place an order with the barista currently working. After taking the order from the customer, the Barista will make the items the customer orders, then serve the ordered items to the customer by calling out their name. The manager will overlook the coffee shop by occasionally changing the items that can be ordered off the menu, and will keep track of the number of hours the barista has worked so that they may pay them accordingly.
 
 #### Potential Users
 > Copy from word doc here
