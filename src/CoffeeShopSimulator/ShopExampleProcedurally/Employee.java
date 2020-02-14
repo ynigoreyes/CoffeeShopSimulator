@@ -11,6 +11,7 @@ public class Employee{
     private String name;
     private Queue<Order> orders = new LinkedList<>();
     private ArrayList<String> orderPutOut = new ArrayList<>();
+    private int orderCount = 0;
 
     public Employee(String name){
         this.name = name;
@@ -20,6 +21,8 @@ public class Employee{
     public void takeOrder(String name, String order){
         Order newOrder = new Order(name, order);
         orders.add(newOrder);
+
+        orderCount += 1;
     }
 
     // make and call order
@@ -35,6 +38,14 @@ public class Employee{
     // coustomer picks up order and is removed from orderPutOut
     public void pickup(Order order){
         orderPutOut.remove(order);
+    }
+
+    public int getOrderCount(){
+        return orderCount;
+    }
+
+    public void resetOrderCount(){
+        orderCount = 0;
     }
 
 }
