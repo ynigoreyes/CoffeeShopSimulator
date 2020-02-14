@@ -4,8 +4,7 @@ import java.util.Scanner;
 
 public class Guest{
 
-    private String name;
-    String getReceipt, menuItem;
+    private String name, getReceipt, menuItem;
 
     public void Guest(String name, Scanner input) {
         this.name = name;
@@ -24,11 +23,7 @@ public class Guest{
         System.out.println("I would like " + menuItem + "please!");
     }
 
-    public void payForOrder(){
-        
-    }
-
-    public void RecieveReceipt(Scanner input){
+    public void ReceiveReceipt(Scanner input){
 
         input.nextLine();
         //customer receives receipt from the employee with payment total
