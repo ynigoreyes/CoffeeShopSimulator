@@ -1,31 +1,23 @@
 package CoffeeShopSimulator.ShopExampleProcedurally;
 
-import java.util.Scanner;
-
 public class Guest{
 
-    private String name, getReceipt, menuItem;
+    private String name;
 
-    public void Guest(String name, Scanner input) {
+    public void Guest(String name) {
         this.name = name;
-
-        input.nextLine();
-        //customer gives their name to the employee for the order
-        //customer name can be called when the order is made by employee
-        System.out.println("My name for this order is" + name + ".");
     }
 
-    public void orderMenuItems(Scanner input){
+    public String orderMenuItems(String[] menu){
+        String menuItem = menu[ (int)(Math.random()*menu.length) ];
 
-        input.nextLine();
         //customer chooses item(s) off the menu created by the boss
         //menu rotates every certain # of drinks
-        System.out.println("I would like " + menuItem + "please!");
+        System.out.println(name + ": I would like " + menuItem + " please!");
+        return menuItem;
     }
 
-    public void ReceiveReceipt(Scanner input){
-
-        input.nextLine();
+    public void ReceiveReceipt(){
         //customer receives receipt from the employee with payment total
         System.out.println(getReceipt + "Thank you!");
     }
