@@ -18,8 +18,8 @@ public class Employee{
     }
 
     // take customer order
-    public void takeOrder(String name, String order){
-        Order newOrder = new Order(name, order);
+    public void takeOrder(Guest guest, String order){
+        Order newOrder = new Order(guest, order);
         orders.add(newOrder);
 
         orderCount += 1;
