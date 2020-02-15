@@ -41,8 +41,15 @@ public class Employee{
     }
 
     // coustomer picks up order and is removed from orderPutOut
-    public void pickup(Order order){
-        orderPutOut.remove(order);
+    public ArrayList<Order> pickup(Guest g){
+        ArrayList<Order> guestOrders = new ArrayList<>();
+        for(int i = orderPutOut.size()-1; i >= 0; i--){
+            if(orderPutOut.get(0).getGuest().equals(g)){
+                guestOrders.add( orderPutOut.remove(i) );
+            }
+        }
+
+        return guestOrders;
     }
 
     public int getOrderCount(){
