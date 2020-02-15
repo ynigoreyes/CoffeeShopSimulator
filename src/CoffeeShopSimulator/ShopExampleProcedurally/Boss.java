@@ -14,7 +14,7 @@ public class Boss{
 	public void PayEmployee(int Orders) // Based on Orders Served Pays Employee 50c on the Order
 	{
 		double pay = Orders * .50;
-		System.out.println("*Boss has paid Employee " + pay +  "*\n");
+		System.out.println("*Boss has paid Employee $" + pay +  "*\n");
 	}
 
 	public String[] NextMenu()	// Alternates Menu Between 3 Pre-Determined Menus Randomly
