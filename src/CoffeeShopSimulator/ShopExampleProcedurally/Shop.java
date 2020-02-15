@@ -47,7 +47,7 @@ public class Shop{
     public void customerPickUp(Guest g){
         System.out.println(g + ": I'm here for my order.");
 
-        ArrayList<Order> guestOrders = barista.pickup(g);
+        ArrayList<Order> guestOrders = employeeServesOrders(g);
         if(guestOrders.size() > 0){
             System.out.println("Barista: Ah yes! I have the following for you:");
             for(Order o : guestOrders)
@@ -65,8 +65,8 @@ public class Shop{
         System.out.println();
     }
 
-    public void employeeServesOrders(){
-        
+    private ArrayList<Order> employeeServesOrders(Guest g){
+        return barista.pickup(g);
     }
 
     public void bossChangesMenu(){
