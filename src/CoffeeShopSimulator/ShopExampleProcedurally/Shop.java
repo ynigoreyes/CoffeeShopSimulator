@@ -45,6 +45,18 @@ public class Shop{
     }
 
     public void customerPickUp(Guest g){
+        System.out.println(g + ": I'm here for my order.");
+
+        ArrayList<Order> guestOrders = barista.pickup(g);
+        if(guestOrders.size() > 0){
+            System.out.println("Barista: Ah yes! I have the following for you:");
+            for(Order o : guestOrders)
+                System.out.println("\t" + o.getOrder());
+            System.out.println(g + ": Thank you!\n");
+        }
+
+        else
+            System.out.println("Barista: Sorry... I do not have any orders for you right now.\n");
 
     }
 
