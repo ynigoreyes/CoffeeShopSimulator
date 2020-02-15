@@ -9,11 +9,9 @@ public class Guest{
     }
 
     public String orderMenuItems(String[] menu){
+        //customer chooses item(s) off the menu created by the boss
         String menuItem = menu[ (int)(Math.random()*menu.length) ];
 
-        //customer chooses item(s) off the menu created by the boss
-        //menu rotates every certain # of drinks
-        System.out.println(name + ": I would like " + menuItem + " please!");
         return menuItem;
     }
 
