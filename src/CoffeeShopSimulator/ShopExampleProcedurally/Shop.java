@@ -7,11 +7,14 @@ public class Shop{
     private Boss manager;
     private Employee barista;
     private ArrayList<Guest> customers;
+    private String[] currentMenu;
 
     public Shop(Boss b, Employee e){
         manager = b;
         barista = e;
         customers = new ArrayList<>();
+
+        currentMenu = manager.NextMenu();
     }
 
     public void newCustomerWalksIn(Guest g){
@@ -46,7 +49,7 @@ public class Shop{
     }
 
     public void bossChangesMenu(){
-
+        currentMenu = manager.NextMenu();
     }
 
     public void bossPaysEmployee(){
