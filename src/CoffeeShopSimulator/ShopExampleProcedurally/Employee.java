@@ -9,8 +9,8 @@ import java.util.List;
 public class Employee{
 
     private String name;
-    private Queue<Order> orders = new LinkedList<>();
-    private ArrayList<String> orderPutOut = new ArrayList<>();
+    private ArrayList<Order> orders = new ArrayList<>();
+    private ArrayList<Order> orderPutOut = new ArrayList<>();
     private int orderCount = 0;
 
     public Employee(String name){
@@ -26,13 +26,18 @@ public class Employee{
     }
 
     // make and call order
-    public void makeNextOrder(){
-        //add order to ___ for pickup
-        orderPutOut.add( orders.peek().guestName );
+    public void makeCurrentOrders(){
 
-        System.out.println("I have an order for " + orders.peek() );
-        //remove order from orders
-        orders.remove();
+        while(orders.size() > 0) {
+            Order currentOrder = orders.get(0);
+
+            //add order to ___ for pickup
+            orderPutOut.add(currentOrder);
+            System.out.println("Barista: I have an order for " + currentOrder.getGuest() + ".");
+            //remove order from orders
+            orders.remove(0);
+        }
+
     }
 
     // coustomer picks up order and is removed from orderPutOut
