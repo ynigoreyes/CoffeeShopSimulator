@@ -41,7 +41,7 @@ public class Shop{
         System.out.println(g + ": Can I get a " + chosenMenuItem + "?");
 
         barista.takeOrder(g, chosenMenuItem);
-        System.out.println("Barista: Certainly! I'll let you know when that's ready.\n")
+        System.out.println("Barista: Certainly! I'll let you know when that's ready.\n");
     }
 
     public void customerPickUp(Guest g){
