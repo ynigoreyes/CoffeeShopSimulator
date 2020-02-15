@@ -26,14 +26,17 @@ public class NewCustomerWalksInEvent extends CoffeeShopEvent {
      * @return If the data passed is not null and is an instance of Customer
      */
     public boolean validateEvent(Object... data){
-        if(data[0] == null){
-            System.out.println("Customer cannot be null!!!");
-            return false;
-        }
 
-        if(! (data[0] instanceof Customer) ){
-            System.out.println("Data must be a Customer!!!");
-            return false;
+        for(Object o : data){
+            if (o == null){
+                System.out.println("A Customer cannot be null!!!");
+                return false;
+            }
+
+            else if( !(o instanceof Customer) ){
+                System.out.println("All data must be a Customer!!!");
+                return false;
+            }
         }
 
         return true;
