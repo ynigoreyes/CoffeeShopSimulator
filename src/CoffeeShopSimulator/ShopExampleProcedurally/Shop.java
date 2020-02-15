@@ -33,7 +33,15 @@ public class Shop{
     }
 
     public void customerOrders(Guest g){
+        System.out.println("Barista: Can I have a name please?");
+        System.out.println(g + ": My name is " + g + ".");
+        System.out.println("Barista: What can I get you today?");
 
+        String chosenMenuItem = g.orderMenuItems(currentMenu);
+        System.out.println(g + ": Can I get a " + chosenMenuItem + "?");
+
+        barista.takeOrder(g, chosenMenuItem);
+        System.out.println("Barista: Certainly! I'll let you know when that's ready.\n")
     }
 
     public void customerPickUp(Guest g){
