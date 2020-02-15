@@ -7,4 +7,12 @@ public class Order {
         this.guest = guest;
         this.order = order;
     }
+
+    public Guest getGuest(){
+        return guest;
+    }
+
+    public String getOrder(){
+        return order;
+    }
 }
