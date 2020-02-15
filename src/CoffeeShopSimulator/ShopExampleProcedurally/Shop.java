@@ -15,6 +15,7 @@ public class Shop{
         customers = new ArrayList<>();
 
         currentMenu = manager.NextMenu();
+        System.out.println("*The coffee shop has opened*\n");
     }
 
     public void newCustomerWalksIn(Guest g){
