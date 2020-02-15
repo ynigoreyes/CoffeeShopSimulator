@@ -49,7 +49,8 @@ public class Shop{
     }
 
     public void employeeMakesAllOrders(){
-
+        barista.makeCurrentOrders();
+        System.out.println();
     }
 
     public void employeeServesOrders(){
