@@ -4,7 +4,7 @@ public class Guest{
 
     private String name;
 
-    public void Guest(String name) {
+    public Guest(String name) {
         this.name = name;
     }
 
