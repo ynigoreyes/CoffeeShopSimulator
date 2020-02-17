@@ -1,9 +1,11 @@
 package CoffeeShopSimulator;
 
 import CoffeeShopSimulator.Utilities.Logger;
+import ShopExampleProcedurally.Data.Boss;
+import ShopExampleProcedurally.Data.Employee;
+import ShopExampleProcedurally.Data.Guest;
+import ShopExampleProcedurally.Data.Shop;
 import com.google.common.eventbus.EventBus;
-
-import CoffeeShopSimulator.ShopExampleProcedurally.*;
 
 public class Main {
     private static final EventBus eventBus = new EventBus("ProductionEventBus");
