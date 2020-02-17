@@ -1,4 +1,4 @@
-package CoffeeShopSimulator.ShopExampleProcedurally;
+package ShopExampleProcedurally.Data;
 
 import java.util.ArrayList;
 

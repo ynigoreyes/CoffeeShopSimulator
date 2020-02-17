@@ -1,9 +1,6 @@
-package CoffeeShopSimulator.ShopExampleProcedurally;
+package ShopExampleProcedurally.Data;
 
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class Employee{
