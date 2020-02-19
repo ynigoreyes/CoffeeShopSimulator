@@ -13,7 +13,7 @@ import com.google.common.eventbus.Subscribe;
  * if we ever decide to switch event bus providers, we
  * won't have to rewrite as much code
  */
-public class CoffeeShopEventBus {
+public class CoffeeShopEventBus implements ICoffeeShopEventBus {
     private final EventBus eventBus;
     private final ILogger logger;
 
@@ -22,32 +22,16 @@ public class CoffeeShopEventBus {
         this.logger = logger;
     }
 
-    /**
-     * Sends events for other people in the coffee shop to listen for.
-     * Event's will follow an always-once dispatch policy (will only send one time)
-     *
-     * @param e the event that will be listened to
-     */
     public void sendEvent(Object e) {
         eventBus.post(e);
     }
 
-    /**
-     * Handles the addition of new customers to the coffee shop
-     *
-     * @param e the event to listen for
-     */
     @Subscribe
     public void handleNewCustomer(NewCustomerWalksInEvent e) {
         logger.Log(e.getCustomer() + " arrived!");
         addPersonToCoffeeShop(e.getCustomer());
     }
 
-    /**
-     * Handles the removal of customers from the coffee shop
-     *
-     * @param e the event to listen for
-     */
     @Subscribe
     public void handleCustomerLeaving(CustomerLeavesEvent e) {
         logger.Log(e.getCustomer() + " left!");
