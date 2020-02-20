@@ -3,12 +3,13 @@ package CoffeeShopSimulator;
 import CoffeeShopSimulator.EventBus.CoffeeShopEventBus;
 import CoffeeShopSimulator.EventBus.Events.CustomerLeavesEvent;
 import CoffeeShopSimulator.EventBus.Events.NewCustomerWalksInEvent;
+import CoffeeShopSimulator.EventBus.ICoffeeShopEventBus;
 import CoffeeShopSimulator.Models.Customer;
 import CoffeeShopSimulator.Utilities.ILogger;
 import com.google.common.eventbus.EventBus;
 
 public class CoffeeShop {
-    private CoffeeShopEventBus coffeeShopEventBus;
+    private ICoffeeShopEventBus coffeeShopEventBus;
 
     /**
      * Creates a Coffee Shop
