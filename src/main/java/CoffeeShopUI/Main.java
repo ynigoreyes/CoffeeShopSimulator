@@ -1,19 +1,17 @@
 package CoffeeShopUI;
 
 import CoffeeShopSimulator.CoffeeShop;
+import CoffeeShopSimulator.ICoffeeShop;
 import CoffeeShopSimulator.Utilities.Logger;
-import CoffeeShopUI.CoffeeShopScene.CoffeeShopSceneController;
+import CoffeeShopUI.ButtonPane.ButtonPaneController;
+import CoffeeShopUI.CoffeeShopPane.CoffeeShopPaneController;
+import CoffeeShopUI.LogPane.LogPaneController;
 import com.google.common.eventbus.EventBus;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 /**
  * How to run project using IntelliJ IDEA...
@@ -26,26 +24,25 @@ import java.io.IOException;
 public class Main extends Application {
     private static final EventBus eventBus = new EventBus("ProductionEventBus");
     private static final Logger logger = new Logger();
+    private static ICoffeeShop coffeeShop;
 
     public static void main(String[] args) {
-        CoffeeShop coffeeShop = new CoffeeShop(eventBus, logger);
-        coffeeShop.start();
+        coffeeShop = new CoffeeShop(eventBus, logger);
         launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) {
         primaryStage.show();
         BorderPane root = new BorderPane();
-        root.setBackground(new Background(new BackgroundFill(Color.CADETBLUE, null, null)));
 
-        CoffeeShopSceneController coffeeShopSceneController1 = new CoffeeShopSceneController(Color.BEIGE);
-        CoffeeShopSceneController coffeeShopSceneController2 = new CoffeeShopSceneController(Color.BLUEVIOLET);
-        CoffeeShopSceneController coffeeShopSceneController3 = new CoffeeShopSceneController(Color.CRIMSON);
+        CoffeeShopPaneController coffeeShopPaneController = new CoffeeShopPaneController(coffeeShop);
+        LogPaneController logPaneController = new LogPaneController(coffeeShop);
+        ButtonPaneController buttonPaneController = new ButtonPaneController(coffeeShop);
 
-        Pane leftPane = coffeeShopSceneController1.getPane();
-        Pane middlePane = coffeeShopSceneController2.getPane();
-        Pane rightPane = coffeeShopSceneController3.getPane();
+        Pane leftPane = logPaneController.getPane();
+        Pane middlePane = coffeeShopPaneController.getPane();
+        Pane rightPane = buttonPaneController.getPane();
 
         root.setLeft(leftPane);
         root.setCenter(middlePane);
