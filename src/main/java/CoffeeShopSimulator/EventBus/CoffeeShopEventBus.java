@@ -26,33 +26,19 @@ public class CoffeeShopEventBus implements ICoffeeShopEventBus {
         eventBus.post(e);
     }
 
+    public EventBus getEventBus() {
+        return this.eventBus;
+    }
+
     @Subscribe
     public void handleNewCustomer(NewCustomerWalksInEvent e) {
         logger.Log(e.getCustomer() + " arrived!");
-        addPersonToCoffeeShop(e.getCustomer());
+        this.eventBus.register(e.getCustomer());
     }
 
     @Subscribe
     public void handleCustomerLeaving(CustomerLeavesEvent e) {
         logger.Log(e.getCustomer() + " left!");
-        removePersonFromCoffeeShop(e.getCustomer());
-    }
-
-    /**
-     * Adds a person to the coffee shop so that they can also listen for events
-     *
-     * @param person the person to add to the coffee shop
-     */
-    private void addPersonToCoffeeShop(Person person) {
-        eventBus.register(person);
-    }
-
-    /**
-     * Removes a person from the coffee shop so that the are no longer listening for events
-     *
-     * @param person the person to remove from the coffee shop
-     */
-    private void removePersonFromCoffeeShop(Person person) {
-        eventBus.unregister(person);
+        this.eventBus.unregister(e.getCustomer());
     }
 }
