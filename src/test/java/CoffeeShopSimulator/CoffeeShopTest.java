@@ -6,10 +6,12 @@ import com.google.common.eventbus.EventBus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class CoffeeShopTest {
     private ILogger logger;
     private EventBus eventBus;
-    private CoffeeShop coffeeShop;
+    private ICoffeeShop coffeeShop;
 
     @BeforeEach
     void setUp() {
@@ -19,7 +21,12 @@ class CoffeeShopTest {
     }
 
     @Test
-    void shouldBuildTheEntireAppProperly() {
-        coffeeShop.start();
+    void ExampleTestThatWillFail() {
+        assertEquals(true, false);
+    }
+
+    @Test
+    void ExampleTestThatWillPass() {
+        assertEquals(true, true);
     }
 }
