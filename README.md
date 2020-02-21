@@ -32,3 +32,7 @@ When the barista arrives to work that day, they will clock in for their shift at
 
 * __Change Menu__
 Along with paying the barista working, the manager will decide what items will be available on the menu for customers to order. The manager has the ability to change the menu as frequently as necessary. This use case is to be completed by Rajeev.
+
+__Trello Board for Issues and Planning__
+
+https://trello.com/b/iS7wiZiW/poke-cafe
