@@ -10,8 +10,14 @@ public interface ICoffeeShop {
     void exampleMethodToUseInUI(Object data);
 
     /**
-     * An example method that adds a person to the Coffee Shop
+     * Adds a person to the Coffee Shop
      * @param person an example person
      */
-    void addPeople(Person person);
+    void handleAddingPersonToCoffeeShop(Person person);
+
+    /**
+     * Removes a person from a Coffee Shop
+     * @param person
+     */
+    void handleRemovingPersonFromCoffeeShop(Person person);
 }

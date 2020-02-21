@@ -8,13 +8,14 @@ import CoffeeShopSimulator.Models.Customer;
 import CoffeeShopSimulator.Models.Person;
 import CoffeeShopSimulator.Utilities.ILogger;
 import com.google.common.eventbus.EventBus;
+import com.google.common.eventbus.Subscribe;
 
 /**
  * CoffeeShop
  *
- * Only entry point for interacting with the coffee shop directly.
- * Consider this the API that the UI will use. Add methods here that
- * will be used by those who are developing the UI
+ * An entry for interacting with the coffee shop directly.
+ * Here, we should be able to add/remove people from the
+ * coffee shop and whatever else is needed in the future
  */
 public class CoffeeShop implements ICoffeeShop {
     private ICoffeeShopEventBus coffeeShopEventBus;
@@ -40,17 +41,27 @@ public class CoffeeShop implements ICoffeeShop {
      */
     private void setup() {
         Customer firstCustomer = new Customer("Rajeev");
-
-        coffeeShopEventBus.sendEvent(new NewCustomerWalksInEvent(firstCustomer));
-        coffeeShopEventBus.sendEvent(new CustomerLeavesEvent(firstCustomer));
+        this.handleAddingPersonToCoffeeShop(firstCustomer);
+        this.handleRemovingPersonFromCoffeeShop(firstCustomer);
     }
 
+    public void handleAddingPersonToCoffeeShop(Person person) {
+        if (person instanceof Customer) {
+            coffeeShopEventBus.sendEvent(new NewCustomerWalksInEvent((Customer) person));
+        }
+
+        // Handle the different types of people leaving here
+    }
+
+    public void handleRemovingPersonFromCoffeeShop(Person person) {
+        if (person instanceof Customer) {
+            coffeeShopEventBus.sendEvent(new CustomerLeavesEvent((Customer) person));
+        }
+
+        // Handle the different types of people leaving here
+    }
 
     public void exampleMethodToUseInUI(Object data) {
         System.out.println(data);
-    }
-
-    public void addPeople(Person person) {
-        System.out.println(person);
     }
 }
