@@ -2,7 +2,6 @@ package ShopExampleProcedurally;
 
 import ShopExampleProcedurally.Data.*;
 
-// TODO: Delete this package before MArch 25th!
 public class Main {
     public static void main(String[] args) {
         Boss manager = new Boss("Miggy");
