@@ -2,6 +2,7 @@ package CoffeeShopUI;
 
 import CoffeeShopSimulator.CoffeeShop;
 import CoffeeShopSimulator.ICoffeeShop;
+import CoffeeShopSimulator.Models.Customer;
 import CoffeeShopSimulator.Utilities.Logger;
 import CoffeeShopUI.ButtonPane.ButtonPaneController;
 import CoffeeShopUI.CoffeeShopPane.CoffeeShopPaneController;
@@ -28,6 +29,11 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         coffeeShop = new CoffeeShop(eventBus, logger);
+
+        Customer firstCustomer = new Customer("Rajeev");
+        coffeeShop.handleAddingPersonToCoffeeShop(firstCustomer);
+        coffeeShop.handleRemovingPersonFromCoffeeShop(firstCustomer);
+
         launch(args);
     }
 

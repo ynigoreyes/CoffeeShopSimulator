@@ -40,9 +40,7 @@ public class CoffeeShop implements ICoffeeShop {
      * TODO: Fill in this block comment with what is going to happen to start off the simulation
      */
     private void setup() {
-        Customer firstCustomer = new Customer("Rajeev");
-        this.handleAddingPersonToCoffeeShop(firstCustomer);
-        this.handleRemovingPersonFromCoffeeShop(firstCustomer);
+        // Anything for set up can go here
     }
 
     public void handleAddingPersonToCoffeeShop(Person person) {
