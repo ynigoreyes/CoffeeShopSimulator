@@ -1,4 +1,4 @@
-package CoffeeShopSimulator.Models;
+package CoffeeShopSimulator.Models.States;
 
 public enum CustomerStates{
     WALKED_IN,      //initial state; goes to {IN_LINE, LEAVE}

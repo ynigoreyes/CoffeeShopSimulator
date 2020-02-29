@@ -1,5 +1,7 @@
 package CoffeeShopSimulator.Models;
 
+import CoffeeShopSimulator.Models.States.CustomerStates;
+
 public class Customer extends Person {
 
     private CustomerStates currentState = CustomerStates.WALKED_IN; //all customers start in initial state

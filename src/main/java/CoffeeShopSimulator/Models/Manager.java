@@ -1,5 +1,7 @@
 package CoffeeShopSimulator.Models;
 
+import CoffeeShopSimulator.Models.States.ManagerStates;
+
 public class Manager extends Person {
 
     private ManagerStates currentState = ManagerStates.READY;  //manager will start in initial state

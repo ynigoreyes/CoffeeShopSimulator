@@ -1,4 +1,4 @@
-package CoffeeShopSimulator.Models;
+package CoffeeShopSimulator.Models.States;
 
 public enum ManagerStates {
 
