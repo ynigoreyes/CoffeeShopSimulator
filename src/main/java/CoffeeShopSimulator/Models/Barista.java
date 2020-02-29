@@ -2,11 +2,15 @@ package CoffeeShopSimulator.Models;
 
 public class Barista extends Person {
 
-    private BaristaStates state = BaristaStates.READY; //all baristas start in the inital state
+    private BaristaStates currentState = BaristaStates.READY; //all baristas start in the inital state
 
     public Barista(String name) {
         super(name);
     }
+
+    public void setCurrentState(BaristaStates state){ this.currentState = state; }
+
+    public BaristaStates getCurrentState(){ return this.currentState; }
 
     @Override
     public String toString(){

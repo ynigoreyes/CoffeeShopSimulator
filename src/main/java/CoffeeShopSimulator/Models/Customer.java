@@ -8,6 +8,10 @@ public class Customer extends Person {
         super(name);
     }
 
+    public void setCurrentState(CustomerStates state){ this.currentState = state; }
+
+    public CustomerStates getCurrentState(){ return this.currentState; }
+
     @Override
     public String toString(){
         return super.toString() + "(a Customer)";

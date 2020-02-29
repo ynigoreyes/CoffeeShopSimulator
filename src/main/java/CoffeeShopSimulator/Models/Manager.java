@@ -2,11 +2,15 @@ package CoffeeShopSimulator.Models;
 
 public class Manager extends Person {
 
-    private ManagerStates state = ManagerStates.READY;  //manager will start in initial state
+    private ManagerStates currentState = ManagerStates.READY;  //manager will start in initial state
 
     public Manager(String name) {
         super(name);
     }
+
+    public void setCurrentState(ManagerStates state){ this.currentState = state; }
+
+    public ManagerStates getCurrentState(){ return this.currentState; }
 
     @Override
     public String toString(){
