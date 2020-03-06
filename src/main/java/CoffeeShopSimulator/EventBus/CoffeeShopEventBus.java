@@ -1,5 +1,6 @@
 package CoffeeShopSimulator.EventBus;
 
+import CoffeeShopSimulator.EventBus.Events.CustomerInLineEvent;
 import CoffeeShopSimulator.EventBus.Events.CustomerLeavesEvent;
 import CoffeeShopSimulator.EventBus.Events.NewCustomerWalksInEvent;
 import CoffeeShopSimulator.Models.Person;
@@ -41,4 +42,6 @@ public class CoffeeShopEventBus implements ICoffeeShopEventBus {
         logger.Log(e.getCustomer() + " left!");
         this.eventBus.unregister(e.getCustomer());
     }
+
+
 }

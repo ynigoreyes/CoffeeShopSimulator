@@ -1,14 +1,17 @@
 package CoffeeShopSimulator;
 
 import CoffeeShopSimulator.EventBus.CoffeeShopEventBus;
-import CoffeeShopSimulator.EventBus.Events.CustomerLeavesEvent;
-import CoffeeShopSimulator.EventBus.Events.NewCustomerWalksInEvent;
+import CoffeeShopSimulator.EventBus.Events.*;
 import CoffeeShopSimulator.EventBus.ICoffeeShopEventBus;
 import CoffeeShopSimulator.Models.Customer;
 import CoffeeShopSimulator.Models.Person;
 import CoffeeShopSimulator.Utilities.ILogger;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 /**
  * CoffeeShop
@@ -19,6 +22,7 @@ import com.google.common.eventbus.Subscribe;
  */
 public class CoffeeShop implements ICoffeeShop {
     private ICoffeeShopEventBus coffeeShopEventBus;
+    private Queue<Customer> lineToOrder = new LinkedList<Customer>();
 
     /**
      * Creates a Coffee Shop
@@ -29,6 +33,8 @@ public class CoffeeShop implements ICoffeeShop {
     public CoffeeShop(EventBus eventBus, ILogger logger) {
         coffeeShopEventBus = new CoffeeShopEventBus(eventBus, logger);
         eventBus.register(coffeeShopEventBus);
+        eventBus.register(this);
+
 
         setup();
     }
@@ -61,5 +67,11 @@ public class CoffeeShop implements ICoffeeShop {
 
     public void exampleMethodToUseInUI(Object data) {
         System.out.println(data);
+    }
+
+    @Subscribe
+    public void handleCustomerInLine(CustomerInLineEvent e) {
+        //logger.Log(e.getCustomer() + " got in line!");
+
     }
 }
