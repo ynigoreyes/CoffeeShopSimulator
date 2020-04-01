@@ -43,5 +43,11 @@ public class CoffeeShopEventBus implements ICoffeeShopEventBus {
         this.eventBus.unregister(e.getCustomer());
     }
 
+    @Subscribe
+    public void handleCustomerGettingInLine(CustomerInLineEvent e) {
+        logger.Log(e.getCustomer() + " Got in line");
+
+    }
+
 
 }

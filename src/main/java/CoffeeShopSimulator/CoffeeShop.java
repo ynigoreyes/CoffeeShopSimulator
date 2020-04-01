@@ -70,8 +70,9 @@ public class CoffeeShop implements ICoffeeShop {
     }
 
     @Subscribe
-    public void handleCustomerInLine(CustomerInLineEvent e) {
-        //logger.Log(e.getCustomer() + " got in line!");
-
+    public void handleCustomerGettingInLine(Person person) {
+        if (person instanceof Customer) {
+            coffeeShopEventBus.sendEvent(new CustomerLeavesEvent((Customer) person));
+        }
     }
 }
