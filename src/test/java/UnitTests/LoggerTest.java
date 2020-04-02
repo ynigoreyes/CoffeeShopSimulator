@@ -1,7 +1,12 @@
 package UnitTests;
 
+import CoffeeShopSimulator.CoffeeShop;
+import CoffeeShopSimulator.ICoffeeShop;
+import CoffeeShopSimulator.Utilities.ILogger;
 import CoffeeShopSimulator.Utilities.LogMessage;
 import CoffeeShopSimulator.Utilities.Logger;
+import com.google.common.eventbus.EventBus;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -25,5 +30,28 @@ public class LoggerTest {
         assertEquals(logs.get(0).getMessage(), message1);
         assertEquals(logs.get(1).getMessage(), message2);
         assertEquals(logs.get(2).getMessage(), message3);
+    }
+
+    static class CoffeeShopTest {
+        private ILogger logger;
+        private EventBus eventBus;
+        private ICoffeeShop coffeeShop;
+
+        @BeforeEach
+        void setUp() {
+            logger = new Logger();
+            eventBus = new EventBus("TestingEventBus");
+            coffeeShop = new CoffeeShop(eventBus, logger);
+        }
+
+        @Test
+        void ExampleTestThatWillFail() {
+            assertEquals(true, false);
+        }
+
+        @Test
+        void ExampleTestThatWillPass() {
+            assertEquals(true, true);
+        }
     }
 }
