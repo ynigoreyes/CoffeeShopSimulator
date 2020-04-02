@@ -1,18 +1,14 @@
 package CoffeeShopUI.Components;
 
-import javafx.fxml.FXMLLoader;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 
-public class CustomButtonController {
-    private Button button = new Button();
-
-    public CustomButtonController() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/CustomButton.fxml"));
-        loader.setController(this);
-        System.out.println("Button Loaded");
+public abstract class CustomButtonController extends Button {
+    public CustomButtonController(String buttonText) {
+        super(buttonText);
+        this.setOnAction(actionEvent -> OnClick());
     }
 
-    public Button getButton() {
-        return button;
-    }
+    public abstract void OnClick();
 }
