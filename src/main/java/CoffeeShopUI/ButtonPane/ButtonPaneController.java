@@ -5,12 +5,10 @@ import CoffeeShopSimulator.Models.Barista;
 import CoffeeShopSimulator.Models.Customer;
 import CoffeeShopSimulator.Models.Manager;
 import CoffeeShopSimulator.Models.Person;
-import CoffeeShopUI.Components.CustomButtonController;
+import CoffeeShopUI.Components.CustomButton;
 import CoffeeShopUI.Shared.BasePaneController;
-import javafx.fxml.FXML;
 import javafx.scene.paint.Color;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 public class ButtonPaneController extends BasePaneController {
@@ -30,7 +28,7 @@ public class ButtonPaneController extends BasePaneController {
      * @param person the person that is currently focused
      */
     public void setNewFocusedUser(Person person) throws Exception {
-        ArrayList<CustomButtonController> listOfButtonsToRender = new ArrayList<>();
+        ArrayList<CustomButton> listOfButtonsToRender = new ArrayList<>();
         this.pane.getChildren().removeAll();
 
         if (person instanceof Barista) {
@@ -54,13 +52,13 @@ public class ButtonPaneController extends BasePaneController {
 
     /**
      * Adds a list of buttons to render on the screen
-     * when we get a new customerit
+     * when we get a new customer
      * @param listOfButtonsToRender
      * @param person
      */
-    private void renderButtonsForCustomerState(ArrayList<CustomButtonController> listOfButtonsToRender, Person person)
+    private void renderButtonsForCustomerState(ArrayList<CustomButton> listOfButtonsToRender, Person person)
     {
-        listOfButtonsToRender.add(new CustomButtonController("Customer Button") {
+        listOfButtonsToRender.add(new CustomButton("Customer Button") {
             @Override
             public void OnClick() {
                 System.out.println("Clicked Customer Button");
@@ -68,9 +66,9 @@ public class ButtonPaneController extends BasePaneController {
         });
     }
 
-    private void renderButtonsForManagerState(ArrayList<CustomButtonController> listOfButtonsToRender, Person person)
+    private void renderButtonsForManagerState(ArrayList<CustomButton> listOfButtonsToRender, Person person)
     {
-        listOfButtonsToRender.add(new CustomButtonController("Manager Button") {
+        listOfButtonsToRender.add(new CustomButton("Manager Button") {
             @Override
             public void OnClick() {
                 System.out.println("Clicked Manager Button");
@@ -78,9 +76,9 @@ public class ButtonPaneController extends BasePaneController {
         });
     }
 
-    private void renderButtonsForBaristaState(ArrayList<CustomButtonController> listOfButtonsToRender, Person person)
+    private void renderButtonsForBaristaState(ArrayList<CustomButton> listOfButtonsToRender, Person person)
     {
-        listOfButtonsToRender.add(new CustomButtonController("Barista Button") {
+        listOfButtonsToRender.add(new CustomButton("Barista Button") {
             @Override
             public void OnClick() {
                 System.out.println("Clicked Barista Button");
