@@ -1,8 +1,8 @@
 package CoffeeShopSimulator.EventBus;
 
+import CoffeeShopSimulator.EventBus.Events.CustomerGetOrderEvent;
 import CoffeeShopSimulator.EventBus.Events.CustomerLeavesEvent;
 import CoffeeShopSimulator.EventBus.Events.NewCustomerWalksInEvent;
-import CoffeeShopSimulator.Models.Person;
 import CoffeeShopSimulator.Utilities.ILogger;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
@@ -13,6 +13,7 @@ import com.google.common.eventbus.Subscribe;
  * if we ever decide to switch event bus providers, we
  * won't have to rewrite as much code
  */
+
 public class CoffeeShopEventBus implements ICoffeeShopEventBus {
     private final EventBus eventBus;
     private final ILogger logger;
@@ -41,4 +42,11 @@ public class CoffeeShopEventBus implements ICoffeeShopEventBus {
         logger.Log(e.getCustomer() + " left!");
         this.eventBus.unregister(e.getCustomer());
     }
+
+    @Subscribe
+    public void handleCustomerGetOrder(CustomerGetOrderEvent e) {
+        logger.Log(e.getCustomer() + " GotOrder");
+        this.eventBus.unregister(e.getCustomer());
+    }
+
 }

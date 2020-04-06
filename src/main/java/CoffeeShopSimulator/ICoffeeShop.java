@@ -1,5 +1,7 @@
 package CoffeeShopSimulator;
 
+import CoffeeShopSimulator.EventBus.Events.CustomerGetOrderEvent;
+import CoffeeShopSimulator.Models.Customer;
 import CoffeeShopSimulator.Models.Person;
 
 public interface ICoffeeShop {
@@ -20,4 +22,6 @@ public interface ICoffeeShop {
      * @param person
      */
     void handleRemovingPersonFromCoffeeShop(Person person);
+
+    void handleCustomerGetOrder(Person person);
 }
