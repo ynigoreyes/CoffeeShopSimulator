@@ -19,17 +19,4 @@ public interface ICoffeeShopEventBus {
      */
     void sendEvent(Object e);
 
-    /**
-     * Handles the addition of new customers to the coffee shop
-     *
-     * @param e the event to listen for
-     */
-    void handleNewCustomer(NewCustomerWalksInEvent e);
-
-    /**
-     * Handles the removal of customers from the coffee shop
-     *
-     * @param e the event to listen for
-     */
-    void handleCustomerLeaving(CustomerLeavesEvent e);
 }
