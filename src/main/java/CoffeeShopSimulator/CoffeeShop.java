@@ -18,7 +18,7 @@ import com.google.common.eventbus.Subscribe;
  * coffee shop and whatever else is needed in the future
  */
 public class CoffeeShop implements ICoffeeShop {
-    private ICoffeeShopEventBus coffeeShopEventBus;
+    public static ICoffeeShopEventBus coffeeShopEventBus;
 
     /**
      * Creates a Coffee Shop
