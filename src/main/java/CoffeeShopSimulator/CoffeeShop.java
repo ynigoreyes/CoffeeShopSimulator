@@ -1,7 +1,9 @@
 package CoffeeShopSimulator;
 
 import CoffeeShopSimulator.EventBus.CoffeeShopEventBus;
-import CoffeeShopSimulator.EventBus.Events.*;
+import CoffeeShopSimulator.EventBus.Events.CoffeeShopEvent;
+import CoffeeShopSimulator.EventBus.Events.CustomerLeavesEvent;
+import CoffeeShopSimulator.EventBus.Events.NewCustomerWalksInEvent;
 import CoffeeShopSimulator.EventBus.ICoffeeShopEventBus;
 import CoffeeShopSimulator.Models.Customer;
 import CoffeeShopSimulator.Models.Person;
@@ -21,7 +23,7 @@ import java.util.Queue;
  * coffee shop and whatever else is needed in the future
  */
 public class CoffeeShop implements ICoffeeShop {
-    private ICoffeeShopEventBus coffeeShopEventBus;
+    private static ICoffeeShopEventBus coffeeShopEventBus;
 
     /**
      * Creates a Coffee Shop
@@ -36,6 +38,10 @@ public class CoffeeShop implements ICoffeeShop {
 
 
         setup();
+    }
+
+    public static void addEventToCoffeeShop(CoffeeShopEvent e){
+        coffeeShopEventBus.sendEvent(e);
     }
 
     /**
