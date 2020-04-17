@@ -22,7 +22,6 @@ import java.util.Queue;
  */
 public class CoffeeShop implements ICoffeeShop {
     private ICoffeeShopEventBus coffeeShopEventBus;
-    private Queue<Customer> lineToOrder = new LinkedList<Customer>();
 
     /**
      * Creates a Coffee Shop
