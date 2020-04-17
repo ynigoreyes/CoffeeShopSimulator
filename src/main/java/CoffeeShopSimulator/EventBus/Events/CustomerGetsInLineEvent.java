@@ -9,7 +9,7 @@ public class CustomerGetsInLineEvent extends CoffeeShopEvent{
 
     public CustomerGetsInLineEvent(Customer customer) {
         super("CustomerGetsInLineEvent");
-        customer = customer;
+        this.customer = customer;
     }
 
     public Customer getCustomer() {
