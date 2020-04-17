@@ -1,6 +1,7 @@
 package CoffeeShopSimulator;
 
 import CoffeeShopSimulator.EventBus.CoffeeShopEventBus;
+import CoffeeShopSimulator.EventBus.Events.CoffeeShopEvent;
 import CoffeeShopSimulator.EventBus.Events.CustomerLeavesEvent;
 import CoffeeShopSimulator.EventBus.Events.NewCustomerWalksInEvent;
 import CoffeeShopSimulator.EventBus.ICoffeeShopEventBus;
@@ -33,8 +34,8 @@ public class CoffeeShop implements ICoffeeShop {
         setup();
     }
 
-    public static ICoffeeShopEventBus getCoffeeShopEventBus(){
-        return coffeeShopEventBus;
+    public static void addEventToCoffeeShop(CoffeeShopEvent e){
+        coffeeShopEventBus.sendEvent(e);
     }
 
     /**
