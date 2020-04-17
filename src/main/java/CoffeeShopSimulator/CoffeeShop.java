@@ -1,6 +1,7 @@
 package CoffeeShopSimulator;
 
 import CoffeeShopSimulator.EventBus.CoffeeShopEventBus;
+import CoffeeShopSimulator.EventBus.Events.CoffeeShopEvent;
 import CoffeeShopSimulator.EventBus.Events.CustomerLeavesEvent;
 import CoffeeShopSimulator.EventBus.Events.NewCustomerWalksInEvent;
 import CoffeeShopSimulator.EventBus.ICoffeeShopEventBus;
@@ -18,7 +19,7 @@ import com.google.common.eventbus.Subscribe;
  * coffee shop and whatever else is needed in the future
  */
 public class CoffeeShop implements ICoffeeShop {
-    private ICoffeeShopEventBus coffeeShopEventBus;
+    private static ICoffeeShopEventBus coffeeShopEventBus;
 
     /**
      * Creates a Coffee Shop
@@ -31,6 +32,10 @@ public class CoffeeShop implements ICoffeeShop {
         eventBus.register(coffeeShopEventBus);
 
         setup();
+    }
+
+    public static void addEventToCoffeeShop(CoffeeShopEvent e){
+        coffeeShopEventBus.sendEvent(e);
     }
 
     /**
