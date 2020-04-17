@@ -11,6 +11,10 @@ import CoffeeShopSimulator.Utilities.ILogger;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 /**
  * CoffeeShop
  *
@@ -30,6 +34,8 @@ public class CoffeeShop implements ICoffeeShop {
     public CoffeeShop(EventBus eventBus, ILogger logger) {
         coffeeShopEventBus = new CoffeeShopEventBus(eventBus, logger);
         eventBus.register(coffeeShopEventBus);
+        eventBus.register(this);
+
 
         setup();
     }
@@ -66,5 +72,12 @@ public class CoffeeShop implements ICoffeeShop {
 
     public void exampleMethodToUseInUI(Object data) {
         System.out.println(data);
+    }
+
+    @Subscribe
+    public void handleCustomerGettingInLine(Person person) {
+        if (person instanceof Customer) {
+            coffeeShopEventBus.sendEvent(new CustomerLeavesEvent((Customer) person));
+        }
     }
 }
