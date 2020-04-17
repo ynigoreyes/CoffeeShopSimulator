@@ -20,6 +20,7 @@ public class CoffeeShopEventBus implements ICoffeeShopEventBus {
     public CoffeeShopEventBus(EventBus eventBus, ILogger logger) {
         this.eventBus = eventBus;
         this.logger = logger;
+        System.out.println("A CoffeeShopEventBus has been created!\n");
     }
 
     public void sendEvent(Object e) {
