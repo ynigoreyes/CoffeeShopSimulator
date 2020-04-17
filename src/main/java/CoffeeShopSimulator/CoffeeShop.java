@@ -1,7 +1,7 @@
 package CoffeeShopSimulator;
 
 import CoffeeShopSimulator.EventBus.CoffeeShopEventBus;
-import CoffeeShopSimulator.EventBus.Events.CustomerGetOrderEvent;
+import CoffeeShopSimulator.EventBus.Events.CoffeeShopEvent;
 import CoffeeShopSimulator.EventBus.Events.CustomerLeavesEvent;
 import CoffeeShopSimulator.EventBus.Events.NewCustomerWalksInEvent;
 import CoffeeShopSimulator.EventBus.ICoffeeShopEventBus;
@@ -13,6 +13,10 @@ import com.google.common.eventbus.EventBus;
 
 import java.util.ArrayList;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 /**
  * CoffeeShop
  *
@@ -21,7 +25,7 @@ import java.util.ArrayList;
  * coffee shop and whatever else is needed in the future
  */
 public class CoffeeShop implements ICoffeeShop {
-    private ICoffeeShopEventBus coffeeShopEventBus;
+    private static ICoffeeShopEventBus coffeeShopEventBus;
 
     /**
      * Creates a Coffee Shop
@@ -32,8 +36,14 @@ public class CoffeeShop implements ICoffeeShop {
     public CoffeeShop(EventBus eventBus, ILogger logger) {
         coffeeShopEventBus = new CoffeeShopEventBus(eventBus, logger);
         eventBus.register(coffeeShopEventBus);
+        eventBus.register(this);
+
 
         setup();
+    }
+
+    public static void addEventToCoffeeShop(CoffeeShopEvent e){
+        coffeeShopEventBus.sendEvent(e);
     }
 
     /**
@@ -74,5 +84,12 @@ public class CoffeeShop implements ICoffeeShop {
 
     public void exampleMethodToUseInUI(Object data) {
         System.out.println(data);
+    }
+
+    @Subscribe
+    public void handleCustomerGettingInLine(Person person) {
+        if (person instanceof Customer) {
+            coffeeShopEventBus.sendEvent(new CustomerLeavesEvent((Customer) person));
+        }
     }
 }
