@@ -6,10 +6,12 @@ import CoffeeShopSimulator.EventBus.Events.CustomerLeavesEvent;
 import CoffeeShopSimulator.EventBus.Events.NewCustomerWalksInEvent;
 import CoffeeShopSimulator.EventBus.ICoffeeShopEventBus;
 import CoffeeShopSimulator.Models.Customer;
+import CoffeeShopSimulator.Models.Order;
 import CoffeeShopSimulator.Models.Person;
 import CoffeeShopSimulator.Utilities.ILogger;
 import com.google.common.eventbus.EventBus;
-import com.google.common.eventbus.Subscribe;
+
+import java.util.ArrayList;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -69,6 +71,16 @@ public class CoffeeShop implements ICoffeeShop {
 
         // Handle the different types of people leaving here
     }
+
+    public void handleCustomerGetOrder(Person person) {
+        if (person instanceof Customer) {
+            coffeeShopEventBus.sendEvent(new CustomerGetOrderEvent((Customer) person));
+        }
+
+        // Handle the different types of people leaving here
+    }
+
+
 
     public void exampleMethodToUseInUI(Object data) {
         System.out.println(data);

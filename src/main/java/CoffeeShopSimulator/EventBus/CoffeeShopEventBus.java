@@ -18,6 +18,7 @@ import java.util.Queue;
  * if we ever decide to switch event bus providers, we
  * won't have to rewrite as much code
  */
+
 public class CoffeeShopEventBus implements ICoffeeShopEventBus {
     private final EventBus eventBus;
     private final ILogger logger;
@@ -50,7 +51,10 @@ public class CoffeeShopEventBus implements ICoffeeShopEventBus {
         this.eventBus.unregister(e.getCustomer());
     }
 
-    @Subscribe
+    public void handleCustomerGetOrder(CustomerGetOrderEvent e) {
+        logger.Log(e.getCustomer() + " GotOrder");
+        this.eventBus.unregister(e.getCustomer());
+
     public void handleCustomerGettingInLine(CustomerInLineEvent e) {
         logger.Log(e.getCustomer() + " Got in line");
         lineToOrder.add((e.getCustomer()));
