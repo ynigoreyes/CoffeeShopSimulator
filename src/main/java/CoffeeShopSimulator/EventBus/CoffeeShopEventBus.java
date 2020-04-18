@@ -46,9 +46,9 @@ public class CoffeeShopEventBus implements ICoffeeShopEventBus {
     }
 
     @Subscribe
-    public void handleCustomerLeaving(CustomerLeavesEvent e) {
-        logger.Log(e.getCustomer() + " left!");
-        this.eventBus.unregister(e.getCustomer());
+    public void handleCustomerGettingInLine(CustomerGetsInLineEvent e) {
+        logger.Log(e.getCustomer() + " Got in line");
+        lineToOrder.add((e.getCustomer()));
     }
 
     @Subscribe
@@ -58,9 +58,9 @@ public class CoffeeShopEventBus implements ICoffeeShopEventBus {
     }
 
     @Subscribe
-    public void handleCustomerGettingInLine(CustomerGetsInLineEvent e) {
-        logger.Log(e.getCustomer() + " Got in line");
-        lineToOrder.add((e.getCustomer()));
+    public void handleCustomerLeaving(CustomerLeavesEvent e) {
+        logger.Log(e.getCustomer() + " left!");
+        this.eventBus.unregister(e.getCustomer());
     }
 
 }
