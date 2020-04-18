@@ -32,11 +32,8 @@ public class Main extends Application {
         coffeeShop = new CoffeeShop(eventBus, logger);
 
         Customer firstCustomer = new Customer("Rajeev");
-        coffeeShop.handleAddingPersonToCoffeeShop(firstCustomer);
-        coffeeShop.handleCustomerGetOrder(firstCustomer);
-        coffeeShop.handleRemovingPersonFromCoffeeShop(firstCustomer);
 
-        launch(args);
+        //launch(args);
     }
 
     @Override
