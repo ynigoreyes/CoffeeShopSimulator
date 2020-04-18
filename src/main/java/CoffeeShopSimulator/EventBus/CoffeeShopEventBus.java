@@ -23,8 +23,6 @@ public class CoffeeShopEventBus implements ICoffeeShopEventBus {
     private final EventBus eventBus;
     private final ILogger logger;
 
-    private Queue<Customer> lineToOrder = new LinkedList<Customer>();
-
     public CoffeeShopEventBus(EventBus eventBus, ILogger logger) {
         this.eventBus = eventBus;
         this.logger = logger;
@@ -48,7 +46,6 @@ public class CoffeeShopEventBus implements ICoffeeShopEventBus {
     @Subscribe
     public void handleCustomerGettingInLine(CustomerGetsInLineEvent e) {
         logger.Log(e.getCustomer() + " Got in line");
-        lineToOrder.add((e.getCustomer()));
     }
 
     @Subscribe

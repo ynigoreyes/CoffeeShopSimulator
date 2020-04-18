@@ -1,10 +1,7 @@
 package CoffeeShopSimulator;
 
 import CoffeeShopSimulator.EventBus.CoffeeShopEventBus;
-import CoffeeShopSimulator.EventBus.Events.CoffeeShopEvent;
-import CoffeeShopSimulator.EventBus.Events.CustomerGetOrderEvent;
-import CoffeeShopSimulator.EventBus.Events.CustomerLeavesEvent;
-import CoffeeShopSimulator.EventBus.Events.NewCustomerWalksInEvent;
+import CoffeeShopSimulator.EventBus.Events.*;
 import CoffeeShopSimulator.EventBus.ICoffeeShopEventBus;
 import CoffeeShopSimulator.Models.Customer;
 import CoffeeShopSimulator.Models.Order;
@@ -28,6 +25,8 @@ import java.util.Queue;
  */
 public class CoffeeShop implements ICoffeeShop {
     private static ICoffeeShopEventBus coffeeShopEventBus;
+
+    private Queue<Customer> lineToOrder = new LinkedList<Customer>();
 
     /**
      * Creates a Coffee Shop
@@ -87,9 +86,9 @@ public class CoffeeShop implements ICoffeeShop {
         System.out.println(data);
     }
 
-    public void handleCustomerGettingInLine(Person person) {
-        if (person instanceof Customer) {
-            coffeeShopEventBus.sendEvent(new CustomerLeavesEvent((Customer) person));
-        }
+    @Subscribe
+    public void handleCustomerGetsInLine(CustomerGetsInLineEvent e) {
+        Customer customerEnteringLine = e.getCustomer();
+        lineToOrder.offer(customerEnteringLine);
     }
 }
