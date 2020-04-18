@@ -1,5 +1,7 @@
 package CoffeeShopSimulator.Models;
 
+import CoffeeShopSimulator.CoffeeShop;
+import CoffeeShopSimulator.EventBus.Events.NewCustomerWalksInEvent;
 import CoffeeShopSimulator.Models.States.CustomerStates;
 
 public class Customer extends Person {
@@ -8,6 +10,7 @@ public class Customer extends Person {
 
     public Customer(String name) {
         super(name);
+        CoffeeShop.addEventToCoffeeShop( new NewCustomerWalksInEvent(this) );
     }
 
     public void setCurrentState(CustomerStates state){ this.currentState = state; }
