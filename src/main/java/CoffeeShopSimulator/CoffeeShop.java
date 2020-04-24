@@ -56,22 +56,6 @@ public class CoffeeShop implements ICoffeeShop {
         // Anything for set up can go here
     }
 
-    public void handleAddingPersonToCoffeeShop(Person person) {
-        if (person instanceof Customer) {
-            coffeeShopEventBus.sendEvent(new NewCustomerWalksInEvent((Customer) person));
-        }
-
-        // Handle the different types of people leaving here
-    }
-
-    public void handleRemovingPersonFromCoffeeShop(Person person) {
-        if (person instanceof Customer) {
-            coffeeShopEventBus.sendEvent(new CustomerLeavesEvent((Customer) person));
-        }
-
-        // Handle the different types of people leaving here
-    }
-
     public void exampleMethodToUseInUI(Object data) {
         System.out.println(data);
     }
