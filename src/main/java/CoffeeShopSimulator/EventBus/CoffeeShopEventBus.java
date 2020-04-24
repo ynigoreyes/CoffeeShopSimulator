@@ -69,7 +69,6 @@ public class CoffeeShopEventBus implements ICoffeeShopEventBus {
     @Subscribe
     public void handleCustomerLeaving(CustomerLeavesEvent e) {
         logger.Log(e.getCustomer() + " left!");
-        this.eventBus.unregister(e.getCustomer());
     }
 
 }
