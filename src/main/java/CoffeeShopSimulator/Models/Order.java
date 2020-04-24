@@ -3,29 +3,23 @@ package CoffeeShopSimulator.Models;
 public class Order {
     private String customerName;
     private double cost;
-    private String order;
-    private int orderNumber;
+    private String menuItem;
 
     public double getCost() {
         return cost;
-    }
-
-    public int getOrderNumber() {
-        return orderNumber;
     }
 
     public String getCustomerName() {
         return customerName;
     }
 
-    public String getOrder() {
-        return order;
+    public String getMenuItem() {
+        return menuItem;
     }
 
-    public Order(String customerName, double cost, int orderNumber, String order) {
+    public Order(String customerName, double cost, String menuItem) {
         this.cost = cost;
         this.customerName = customerName;
-        this.order = order;
-        this.orderNumber = orderNumber;
+        this.menuItem = menuItem;
     }
 }
