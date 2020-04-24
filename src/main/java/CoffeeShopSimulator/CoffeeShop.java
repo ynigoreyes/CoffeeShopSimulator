@@ -25,6 +25,7 @@ public class CoffeeShop implements ICoffeeShop {
 
     private Queue<Customer> lineToOrder = new LinkedList<Customer>();
     private String[] currentMenu = {"Latte", "Coffee", "Water", "Biscuit", "Croissant"};
+    private HashMap<Customer, Order> readyOrders = new HashMap<Customer, Order>();
 
     /**
      * Creates a Coffee Shop
@@ -96,8 +97,15 @@ public class CoffeeShop implements ICoffeeShop {
         Customer customer = lineToOrder.poll();
 
         String selectedMenuItem = customer.getRandomOrder(currentMenu);
-        Order customerOrder = new Order(customer.getName(), 20.0, selectedMenuItem);
+        Order customerOrder = new Order(customer, 20.0, selectedMenuItem);
 
         barista.tookOrder(customerOrder);
+    }
+
+    @Subscribe
+    public void handleBaristaMakeAndServeAllOrders(BaristaMakeAndServeAllOrdersEvent e) {
+        for(Order o: e.getOrders()){
+            readyOrders.put(o.getCustomer(), o);
+        }
     }
 }

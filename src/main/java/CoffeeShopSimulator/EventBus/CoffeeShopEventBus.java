@@ -3,6 +3,7 @@ package CoffeeShopSimulator.EventBus;
 import CoffeeShopSimulator.EventBus.Events.*;
 import CoffeeShopSimulator.Models.Barista;
 import CoffeeShopSimulator.Models.Customer;
+import CoffeeShopSimulator.Models.Order;
 import CoffeeShopSimulator.Utilities.ILogger;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
@@ -49,6 +50,16 @@ public class CoffeeShopEventBus implements ICoffeeShopEventBus {
     @Subscribe
     public void handleBaristaTakingCustomerOrder(BaristaTakeNextOrderEvent e){
         logger.Log(e.getBarista() + "is taking the next order...");
+    }
+
+    @Subscribe
+    public void handleBaristaMakeAndServeAllOrders(BaristaMakeAndServeAllOrdersEvent e){
+        String logString = e.getBarista() + " made and served the following orders:: \n";
+        for(Order o: e.getOrders()){
+            logString += "\t" + o + "\t";
+        }
+        logger.Log(logString);
+
     }
 
     @Subscribe

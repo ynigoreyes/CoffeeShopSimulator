@@ -1,7 +1,7 @@
 package CoffeeShopSimulator.Models;
 
 public class Order {
-    private String customerName;
+    private Customer customer;
     private double cost;
     private String menuItem;
 
@@ -9,17 +9,22 @@ public class Order {
         return cost;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public Customer getCustomer() {
+        return customer;
     }
 
     public String getMenuItem() {
         return menuItem;
     }
 
-    public Order(String customerName, double cost, String menuItem) {
+    public Order(Customer customer, double cost, String menuItem) {
         this.cost = cost;
-        this.customerName = customerName;
+        this.customer = customer;
         this.menuItem = menuItem;
     }
+
+    public String toString(){
+        return String.format("%s\t\t%s\t\t%4.2f", customer.getName(), menuItem, cost);
+    }
+
 }

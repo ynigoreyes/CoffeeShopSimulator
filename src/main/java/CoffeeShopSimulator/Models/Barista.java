@@ -1,6 +1,7 @@
 package CoffeeShopSimulator.Models;
 
 import CoffeeShopSimulator.CoffeeShop;
+import CoffeeShopSimulator.EventBus.Events.BaristaMakeAndServeAllOrdersEvent;
 import CoffeeShopSimulator.EventBus.Events.BaristaTakeNextOrderEvent;
 import CoffeeShopSimulator.EventBus.Events.CustomerGetOrderEvent;
 import com.google.common.eventbus.Subscribe;
@@ -19,6 +20,11 @@ public class Barista extends Person {
 
     public void takeNextOrder(){
         CoffeeShop.addEventToCoffeeShop( new BaristaTakeNextOrderEvent(this) );
+    }
+
+    public void makeAndServeAllOrders() {
+        CoffeeShop.addEventToCoffeeShop( new BaristaMakeAndServeAllOrdersEvent(this, (HashSet<Order>) ordersTaken.clone() ) );
+        ordersTaken = new HashSet<>();
     }
 
     public void setCurrentState(BaristaStates state){ this.currentState = state; }
