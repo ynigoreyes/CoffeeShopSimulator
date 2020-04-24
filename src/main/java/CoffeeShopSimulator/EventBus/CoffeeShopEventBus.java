@@ -71,4 +71,8 @@ public class CoffeeShopEventBus implements ICoffeeShopEventBus {
         logger.Log(e.getCustomer() + " left!");
     }
 
+    public void handleManagerChangeMenu(ManagerChangeMenuEvent e){
+        logger.Log(e.getManager() + " changed the menu!");
+    }
+
 }

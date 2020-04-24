@@ -7,6 +7,8 @@ import CoffeeShopSimulator.EventBus.Events.CustomerLeavesEvent;
 import CoffeeShopSimulator.EventBus.Events.NewCustomerWalksInEvent;
 import CoffeeShopSimulator.Models.States.CustomerStates;
 
+import java.util.HashMap;
+
 public class Customer extends Person {
 
     private CustomerStates currentState = CustomerStates.WALKED_IN; //all customers start in initial state
@@ -24,9 +26,14 @@ public class Customer extends Person {
 
     public void leaveCoffeeShop() { CoffeeShop.addEventToCoffeeShop( new CustomerLeavesEvent(this)); }
 
-    public String getRandomOrder(String[] menu){
-        int menuItemIndex = (int)(Math.random() * menu.length);
-        return menu[menuItemIndex];
+    public String getRandomOrder(HashMap<String,Double> menu){
+        String[] menuItems = new String[menu.size()];
+        int i = 0;
+        for(String key: menu.keySet())
+            menuItems[i++] = key;
+
+        int chosenItem = (int)(Math.random()*i);
+        return menuItems[chosenItem];
     }
 
     public void setCurrentState(CustomerStates state){ this.currentState = state; }

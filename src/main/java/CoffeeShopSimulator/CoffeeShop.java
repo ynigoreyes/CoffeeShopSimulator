@@ -24,7 +24,7 @@ public class CoffeeShop implements ICoffeeShop {
     private static ICoffeeShopEventBus coffeeShopEventBus;
 
     private Queue<Customer> lineToOrder = new LinkedList<Customer>();
-    private String[] currentMenu = {"Latte", "Coffee", "Water", "Biscuit", "Croissant"};
+    private HashMap<String, Double> menu;
     private HashMap<Customer, Order> readyOrders = new HashMap<Customer, Order>();
 
     /**
@@ -54,6 +54,11 @@ public class CoffeeShop implements ICoffeeShop {
      */
     private void setup() {
         // Anything for set up can go here
+        menu.put("Latte", 5.99);
+        menu.put("Coffee", 3.95);
+        menu.put("Water", 0.01);
+        menu.put("Biscuit", 2.99);
+        menu.put("Croissant", 2.99);
     }
 
     public void exampleMethodToUseInUI(Object data) {
@@ -71,8 +76,8 @@ public class CoffeeShop implements ICoffeeShop {
         Barista barista = e.getBarista();
         Customer customer = lineToOrder.poll();
 
-        String selectedMenuItem = customer.getRandomOrder(currentMenu);
-        Order customerOrder = new Order(customer, 20.0, selectedMenuItem);
+        String selectedMenuItem = customer.getRandomOrder(menu);
+        Order customerOrder = new Order(customer, menu.get(selectedMenuItem), selectedMenuItem);
 
         barista.tookOrder(customerOrder);
     }
@@ -87,4 +92,9 @@ public class CoffeeShop implements ICoffeeShop {
     @Subscribe void handleCustomerCollectsOrder(CustomerCollectOrderEvent e) {
         readyOrders.remove(e.getCustomer());
     }
+
+    @Subscribe void handleManagerChangeMenu(ManagerChangeMenuEvent e) {
+        menu = e.getNewMenu();
+    }
+
 }
