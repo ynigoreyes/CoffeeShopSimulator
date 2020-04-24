@@ -39,7 +39,6 @@ public class CoffeeShopEventBus implements ICoffeeShopEventBus {
     @Subscribe
     public void handleNewCustomer(NewCustomerWalksInEvent e) {
         logger.Log(e.getCustomer() + " arrived!");
-        this.eventBus.register(e.getCustomer());
     }
 
     @Subscribe
@@ -60,12 +59,6 @@ public class CoffeeShopEventBus implements ICoffeeShopEventBus {
         }
         logger.Log(logString);
 
-    }
-
-    @Subscribe
-    public void handleCustomerGetOrder(CustomerGetOrderEvent e) {
-        logger.Log(e.getCustomer() + " GotOrder");
-        this.eventBus.unregister(e.getCustomer());
     }
 
     @Subscribe

@@ -3,8 +3,6 @@ package CoffeeShopSimulator.Models;
 import CoffeeShopSimulator.CoffeeShop;
 import CoffeeShopSimulator.EventBus.Events.BaristaMakeAndServeAllOrdersEvent;
 import CoffeeShopSimulator.EventBus.Events.BaristaTakeNextOrderEvent;
-import CoffeeShopSimulator.EventBus.Events.CustomerGetOrderEvent;
-import com.google.common.eventbus.Subscribe;
 
 import java.util.HashSet;
 import CoffeeShopSimulator.Models.States.BaristaStates;

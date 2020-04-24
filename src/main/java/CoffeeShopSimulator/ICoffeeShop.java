@@ -1,7 +1,5 @@
 package CoffeeShopSimulator;
 
-import CoffeeShopSimulator.EventBus.Events.CustomerGetOrderEvent;
-import CoffeeShopSimulator.Models.Customer;
 import CoffeeShopSimulator.Models.Person;
 
 public interface ICoffeeShop {
