@@ -3,10 +3,11 @@ package CoffeeShopSimulator;
 import CoffeeShopSimulator.EventBus.CoffeeShopEventBus;
 import CoffeeShopSimulator.EventBus.Events.*;
 import CoffeeShopSimulator.EventBus.ICoffeeShopEventBus;
+import CoffeeShopSimulator.Exceptions.EventException;
 import CoffeeShopSimulator.Models.Barista;
 import CoffeeShopSimulator.Models.Customer;
 import CoffeeShopSimulator.Models.Order;
-import CoffeeShopSimulator.Models.Person;
+import CoffeeShopSimulator.Models.States.CustomerStates;
 import CoffeeShopSimulator.Utilities.ILogger;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
@@ -68,7 +69,22 @@ public class CoffeeShop implements ICoffeeShop {
     @Subscribe
     public void handleCustomerGetsInLine(CustomerGetsInLineEvent e) {
         Customer customerEnteringLine = e.getCustomer();
-        lineToOrder.offer(customerEnteringLine);
+
+        if(customerEnteringLine.getCurrentState() == CustomerStates.LEAVE){
+            String details = customerEnteringLine + " is not in the Coffee Shop...";
+            coffeeShopEventBus.sendEvent( new EventException( details ) );
+        }
+
+
+        if(customerEnteringLine.getCurrentState() == CustomerStates.WALKED_IN) {
+            lineToOrder.offer(customerEnteringLine);
+            customerEnteringLine.setCurrentState(CustomerStates.IN_LINE);
+        }
+        else{
+            String details = customerEnteringLine + " currently cannot enter into line...";
+            coffeeShopEventBus.sendEvent( new EventException( details ) );
+        }
+
     }
 
     @Subscribe
@@ -76,10 +92,27 @@ public class CoffeeShop implements ICoffeeShop {
         Barista barista = e.getBarista();
         Customer customer = lineToOrder.poll();
 
-        String selectedMenuItem = customer.getRandomOrder(menu);
-        Order customerOrder = new Order(customer, menu.get(selectedMenuItem), selectedMenuItem);
+        while(customer != null && customer.getCurrentState() == CustomerStates.LEAVE){
+            customer = lineToOrder.poll();
+        }
 
-        barista.tookOrder(customerOrder);
+        if (customer != null){
+            if(customer.getCurrentState() == CustomerStates.IN_LINE){
+                String selectedMenuItem = customer.getRandomOrder(menu);
+                Order customerOrder = new Order(customer, menu.get(selectedMenuItem), selectedMenuItem);
+                barista.tookOrder(customerOrder);
+                customer.setCurrentState(CustomerStates.WAIT_FOR_ORDER);
+            }
+            else{
+                String details = customer + " cannot order right now...";
+                coffeeShopEventBus.sendEvent( new EventException(details) );
+            }
+        }
+
+        else{
+            String details = "There are no customers in line for " + barista + " to take orders for...";
+            coffeeShopEventBus.sendEvent( new EventException(details) );
+        }
     }
 
     @Subscribe
@@ -89,8 +122,20 @@ public class CoffeeShop implements ICoffeeShop {
         }
     }
 
-    @Subscribe void handleCustomerCollectsOrder(CustomerCollectOrderEvent e) {
-        readyOrders.remove(e.getCustomer());
+    @Subscribe
+    public void handleCustomerCollectsOrder(CustomerCollectOrderEvent e) {
+        Order orderCollected = readyOrders.remove(e.getCustomer());
+        if(e.getCustomer().getCurrentState() != CustomerStates.WAIT_FOR_ORDER || orderCollected == null){
+            String details = "There is currently no order for " + e.getCustomer() + " to collect...";
+            coffeeShopEventBus.sendEvent( new EventException(details) );
+        }
+        else
+            e.getCustomer().setCurrentState(CustomerStates.WALKED_IN);
+    }
+
+    @Subscribe
+    public void handleCustomerLeaving(CustomerLeavesEvent e){
+        e.getCustomer().setCurrentState(CustomerStates.LEAVE);
     }
 
     @Subscribe void handleManagerChangeMenu(ManagerChangeMenuEvent e) {

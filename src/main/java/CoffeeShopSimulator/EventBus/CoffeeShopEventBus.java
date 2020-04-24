@@ -1,6 +1,7 @@
 package CoffeeShopSimulator.EventBus;
 
 import CoffeeShopSimulator.EventBus.Events.*;
+import CoffeeShopSimulator.Exceptions.EventException;
 import CoffeeShopSimulator.Models.Barista;
 import CoffeeShopSimulator.Models.Customer;
 import CoffeeShopSimulator.Models.Order;
@@ -43,7 +44,7 @@ public class CoffeeShopEventBus implements ICoffeeShopEventBus {
 
     @Subscribe
     public void handleCustomerGettingInLine(CustomerGetsInLineEvent e) {
-        logger.Log(e.getCustomer() + " Got in line");
+        logger.Log(e.getCustomer() + " is getting in line");
     }
 
     @Subscribe
@@ -63,7 +64,7 @@ public class CoffeeShopEventBus implements ICoffeeShopEventBus {
 
     @Subscribe
     public void handleCustomerCollectsOrder(CustomerCollectOrderEvent e){
-        logger.Log(e.getCustomer() + " collected their order");
+        logger.Log(e.getCustomer() + " is collecting their order");
     }
 
     @Subscribe
@@ -71,8 +72,14 @@ public class CoffeeShopEventBus implements ICoffeeShopEventBus {
         logger.Log(e.getCustomer() + " left!");
     }
 
+    @Subscribe
     public void handleManagerChangeMenu(ManagerChangeMenuEvent e){
         logger.Log(e.getManager() + " changed the menu!");
+    }
+
+    @Subscribe
+    public void handleStateError(EventException e){
+        logger.LogError("Something went wrong...", e);
     }
 
 }
