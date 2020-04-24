@@ -18,6 +18,11 @@ public class Customer extends Person {
         CoffeeShop.addEventToCoffeeShop( new CustomerGetsInLineEvent(this) );
     }
 
+    public String getRandomOrder(String[] menu){
+        int menuItemIndex = (int)(Math.random() * menu.length);
+        return menu[menuItemIndex];
+    }
+
     public void setCurrentState(CustomerStates state){ this.currentState = state; }
 
     public CustomerStates getCurrentState(){ return this.currentState; }

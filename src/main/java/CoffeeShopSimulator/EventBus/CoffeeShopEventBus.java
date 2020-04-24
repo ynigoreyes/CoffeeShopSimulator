@@ -1,9 +1,7 @@
 package CoffeeShopSimulator.EventBus;
 
-import CoffeeShopSimulator.EventBus.Events.CustomerGetOrderEvent;
-import CoffeeShopSimulator.EventBus.Events.CustomerGetsInLineEvent;
-import CoffeeShopSimulator.EventBus.Events.CustomerLeavesEvent;
-import CoffeeShopSimulator.EventBus.Events.NewCustomerWalksInEvent;
+import CoffeeShopSimulator.EventBus.Events.*;
+import CoffeeShopSimulator.Models.Barista;
 import CoffeeShopSimulator.Models.Customer;
 import CoffeeShopSimulator.Utilities.ILogger;
 import com.google.common.eventbus.EventBus;
@@ -46,6 +44,11 @@ public class CoffeeShopEventBus implements ICoffeeShopEventBus {
     @Subscribe
     public void handleCustomerGettingInLine(CustomerGetsInLineEvent e) {
         logger.Log(e.getCustomer() + " Got in line");
+    }
+
+    @Subscribe
+    public void handleBaristaTakingCustomerOrder(BaristaTakeNextOrderEvent e){
+        logger.Log(e.getBarista() + "is taking the next order...");
     }
 
     @Subscribe

@@ -25,6 +25,10 @@ public class Barista extends Person {
 
     public BaristaStates getCurrentState(){ return this.currentState; }
 
+    public void tookOrder(Order o){
+        ordersTaken.add(o);
+    }
+
     @Override
     public String toString(){
         return super.toString() + "(a Barista)";

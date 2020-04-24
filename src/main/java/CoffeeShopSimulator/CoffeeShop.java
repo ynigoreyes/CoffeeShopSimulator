@@ -3,6 +3,7 @@ package CoffeeShopSimulator;
 import CoffeeShopSimulator.EventBus.CoffeeShopEventBus;
 import CoffeeShopSimulator.EventBus.Events.*;
 import CoffeeShopSimulator.EventBus.ICoffeeShopEventBus;
+import CoffeeShopSimulator.Models.Barista;
 import CoffeeShopSimulator.Models.Customer;
 import CoffeeShopSimulator.Models.Order;
 import CoffeeShopSimulator.Models.Person;
@@ -10,11 +11,7 @@ import CoffeeShopSimulator.Utilities.ILogger;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 
-import java.util.ArrayList;
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * CoffeeShop
@@ -27,6 +24,7 @@ public class CoffeeShop implements ICoffeeShop {
     private static ICoffeeShopEventBus coffeeShopEventBus;
 
     private Queue<Customer> lineToOrder = new LinkedList<Customer>();
+    private String[] currentMenu = {"Latte", "Coffee", "Water", "Biscuit", "Croissant"};
 
     /**
      * Creates a Coffee Shop
@@ -90,5 +88,16 @@ public class CoffeeShop implements ICoffeeShop {
     public void handleCustomerGetsInLine(CustomerGetsInLineEvent e) {
         Customer customerEnteringLine = e.getCustomer();
         lineToOrder.offer(customerEnteringLine);
+    }
+
+    @Subscribe
+    public void handleBaristaTakingCustomerOrder(BaristaTakeNextOrderEvent e) {
+        Barista barista = e.getBarista();
+        Customer customer = lineToOrder.poll();
+
+        String selectedMenuItem = customer.getRandomOrder(currentMenu);
+        Order customerOrder = new Order(customer.getName(), 20.0, selectedMenuItem);
+
+        barista.tookOrder(customerOrder);
     }
 }
