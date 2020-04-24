@@ -5,11 +5,9 @@ import CoffeeShopSimulator.EventBus.Events.BaristaMakeAndServeAllOrdersEvent;
 import CoffeeShopSimulator.EventBus.Events.BaristaTakeNextOrderEvent;
 
 import java.util.HashSet;
-import CoffeeShopSimulator.Models.States.BaristaStates;
 
 public class Barista extends Person {
 
-    private BaristaStates currentState = BaristaStates.READY; //all baristas start in the inital state
     private HashSet<Order> ordersTaken = new HashSet<>();
 
     public Barista(String name) {
@@ -24,10 +22,6 @@ public class Barista extends Person {
         CoffeeShop.addEventToCoffeeShop( new BaristaMakeAndServeAllOrdersEvent(this, (HashSet<Order>) ordersTaken.clone() ) );
         ordersTaken = new HashSet<>();
     }
-
-    public void setCurrentState(BaristaStates state){ this.currentState = state; }
-
-    public BaristaStates getCurrentState(){ return this.currentState; }
 
     public void tookOrder(Order o){
         ordersTaken.add(o);
