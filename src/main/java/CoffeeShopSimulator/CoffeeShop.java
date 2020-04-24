@@ -72,15 +72,6 @@ public class CoffeeShop implements ICoffeeShop {
         // Handle the different types of people leaving here
     }
 
-    public void handleCustomerGetOrder(Person person) {
-        if (person instanceof Customer) {
-            coffeeShopEventBus.sendEvent( new CustomerGetOrderEvent( (Customer) person, 1 ) );
-        }
-
-    }
-
-
-
     public void exampleMethodToUseInUI(Object data) {
         System.out.println(data);
     }
@@ -107,5 +98,9 @@ public class CoffeeShop implements ICoffeeShop {
         for(Order o: e.getOrders()){
             readyOrders.put(o.getCustomer(), o);
         }
+    }
+
+    @Subscribe void handleCustomerCollectsOrder(CustomerCollectOrderEvent e) {
+        readyOrders.remove(e.getCustomer());
     }
 }

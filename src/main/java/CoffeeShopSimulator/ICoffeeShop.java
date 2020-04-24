@@ -21,5 +21,4 @@ public interface ICoffeeShop {
      */
     void handleRemovingPersonFromCoffeeShop(Person person);
 
-    void handleCustomerGetOrder(Person person);
 }
