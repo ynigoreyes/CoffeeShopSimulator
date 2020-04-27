@@ -14,12 +14,11 @@ public class Main {
      * 3. Type in "mvn clean javafx:run" without quotes
      * 4. Save run configuration for later
      */
-    private static final EventBus eventBus = new EventBus("ProductionEventBus");
-    private static final Logger logger = new Logger();
     private static ICoffeeShop coffeeShop;
 
     public static void main(String[] args) {
-        coffeeShop = new CoffeeShop(eventBus, logger);
+
+        CoffeeShop coffeeShop = new CoffeeShop();
 
         Manager newManager = new Manager("Emily");
 

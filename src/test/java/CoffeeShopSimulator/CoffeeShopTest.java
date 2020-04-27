@@ -17,7 +17,7 @@ class CoffeeShopTest {
     void setUp() {
         logger = new Logger();
         eventBus = new EventBus("TestingEventBus");
-        coffeeShop = new CoffeeShop(eventBus, logger);
+        coffeeShop = new CoffeeShop();
     }
 
     @Test

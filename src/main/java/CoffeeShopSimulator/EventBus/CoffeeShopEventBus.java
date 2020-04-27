@@ -6,6 +6,7 @@ import CoffeeShopSimulator.Models.Barista;
 import CoffeeShopSimulator.Models.Customer;
 import CoffeeShopSimulator.Models.Order;
 import CoffeeShopSimulator.Utilities.ILogger;
+import CoffeeShopSimulator.Utilities.Logger;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 
@@ -20,13 +21,19 @@ import java.util.Queue;
  */
 
 public class CoffeeShopEventBus implements ICoffeeShopEventBus {
+
+    private static CoffeeShopEventBus instance = new CoffeeShopEventBus( new EventBus("ProductionEventBus"), new Logger() );
     private final EventBus eventBus;
     private final ILogger logger;
 
-    public CoffeeShopEventBus(EventBus eventBus, ILogger logger) {
+    private CoffeeShopEventBus(EventBus eventBus, ILogger logger) {
         this.eventBus = eventBus;
         this.logger = logger;
         System.out.println("A CoffeeShopEventBus has been created!\n");
+    }
+
+    public static CoffeeShopEventBus getInstance(){
+        return instance;
     }
 
     public void sendEvent(Object e) {
