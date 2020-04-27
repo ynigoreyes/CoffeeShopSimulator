@@ -22,6 +22,7 @@ import javafx.stage.Stage;
  * 3. Type in "mvn clean javafx:run" without quotes
  * 4. Save run configuration for later
  */
+
 public class Main extends Application {
     private static final EventBus eventBus = new EventBus("ProductionEventBus");
     private static final Logger logger = new Logger();
@@ -31,10 +32,8 @@ public class Main extends Application {
         coffeeShop = new CoffeeShop(eventBus, logger);
 
         Customer firstCustomer = new Customer("Rajeev");
-        coffeeShop.handleAddingPersonToCoffeeShop(firstCustomer);
-        coffeeShop.handleRemovingPersonFromCoffeeShop(firstCustomer);
 
-        launch(args);
+        //launch(args);
     }
 
     @Override

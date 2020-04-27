@@ -1,11 +1,16 @@
 package CoffeeShopSimulator.EventBus;
 
-import CoffeeShopSimulator.EventBus.Events.CustomerLeavesEvent;
-import CoffeeShopSimulator.EventBus.Events.NewCustomerWalksInEvent;
-import CoffeeShopSimulator.Models.Person;
+import CoffeeShopSimulator.EventBus.Events.*;
+import CoffeeShopSimulator.Exceptions.EventException;
+import CoffeeShopSimulator.Models.Barista;
+import CoffeeShopSimulator.Models.Customer;
+import CoffeeShopSimulator.Models.Order;
 import CoffeeShopSimulator.Utilities.ILogger;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * This is a Guava Event Bus wrapper.
@@ -13,6 +18,7 @@ import com.google.common.eventbus.Subscribe;
  * if we ever decide to switch event bus providers, we
  * won't have to rewrite as much code
  */
+
 public class CoffeeShopEventBus implements ICoffeeShopEventBus {
     private final EventBus eventBus;
     private final ILogger logger;
@@ -20,6 +26,7 @@ public class CoffeeShopEventBus implements ICoffeeShopEventBus {
     public CoffeeShopEventBus(EventBus eventBus, ILogger logger) {
         this.eventBus = eventBus;
         this.logger = logger;
+        System.out.println("A CoffeeShopEventBus has been created!\n");
     }
 
     public void sendEvent(Object e) {
@@ -33,12 +40,46 @@ public class CoffeeShopEventBus implements ICoffeeShopEventBus {
     @Subscribe
     public void handleNewCustomer(NewCustomerWalksInEvent e) {
         logger.Log(e.getCustomer() + " arrived!");
-        this.eventBus.register(e.getCustomer());
+    }
+
+    @Subscribe
+    public void handleCustomerGettingInLine(CustomerGetsInLineEvent e) {
+        logger.Log(e.getCustomer() + " is getting in line");
+    }
+
+    @Subscribe
+    public void handleBaristaTakingCustomerOrder(BaristaTakeNextOrderEvent e){
+        logger.Log(e.getBarista() + "is taking the next order...");
+    }
+
+    @Subscribe
+    public void handleBaristaMakeAndServeAllOrders(BaristaMakeAndServeAllOrdersEvent e){
+        String logString = e.getBarista() + " made and served the following orders:: \n";
+        for(Order o: e.getOrders()){
+            logString += "\t" + o + "\t";
+        }
+        logger.Log(logString);
+
+    }
+
+    @Subscribe
+    public void handleCustomerCollectsOrder(CustomerCollectOrderEvent e){
+        logger.Log(e.getCustomer() + " is collecting their order");
     }
 
     @Subscribe
     public void handleCustomerLeaving(CustomerLeavesEvent e) {
         logger.Log(e.getCustomer() + " left!");
-        this.eventBus.unregister(e.getCustomer());
     }
+
+    @Subscribe
+    public void handleManagerChangeMenu(ManagerChangeMenuEvent e){
+        logger.Log(e.getManager() + " changed the menu!");
+    }
+
+    @Subscribe
+    public void handleStateError(EventException e){
+        logger.LogError("Something went wrong...", e);
+    }
+
 }
