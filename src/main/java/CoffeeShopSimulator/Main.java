@@ -25,4 +25,5 @@ public class Main {
 
         newManager.changeMenu();
     }
+
 }
