@@ -30,7 +30,6 @@ public class Manager extends Person {
     }
 
     public void changeMenu(){
-
         if( currentMenu.equals("two") ){
             CoffeeShop.addEventToCoffeeShop( new ManagerChangeMenuEvent(this, menuOne));
             currentMenu = "one";
@@ -39,7 +38,6 @@ public class Manager extends Person {
             CoffeeShop.addEventToCoffeeShop( new ManagerChangeMenuEvent(this, menuTwo));
             currentMenu = "two";
         }
-
     }
 
     @Override

@@ -1,6 +1,7 @@
 package CoffeeShopSimulator;
 
 import CoffeeShopSimulator.Models.Customer;
+import CoffeeShopSimulator.Models.Manager;
 import CoffeeShopSimulator.Utilities.Logger;
 import com.google.common.eventbus.EventBus;
 
@@ -19,5 +20,9 @@ public class Main {
 
     public static void main(String[] args) {
         coffeeShop = new CoffeeShop(eventBus, logger);
+
+        Manager newManager = new Manager("Emily");
+
+        newManager.changeMenu();
     }
 }
