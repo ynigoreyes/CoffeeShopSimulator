@@ -9,8 +9,14 @@ import CoffeeShopSimulator.Models.Customer;
 import CoffeeShopSimulator.Models.Order;
 import CoffeeShopSimulator.Models.States.CustomerStates;
 import CoffeeShopSimulator.Utilities.ILogger;
+import CoffeeShopSimulator.Utilities.Logger;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 import java.util.*;
 
@@ -25,7 +31,7 @@ public class CoffeeShop implements ICoffeeShop {
     private static ICoffeeShopEventBus coffeeShopEventBus;
 
     private Queue<Customer> lineToOrder = new LinkedList<Customer>();
-    private HashMap<String, Double> menu;
+    private HashMap<String, Double> menu = new HashMap<>();
     private HashMap<Customer, Order> readyOrders = new HashMap<Customer, Order>();
 
     /**
@@ -141,5 +147,4 @@ public class CoffeeShop implements ICoffeeShop {
     @Subscribe void handleManagerChangeMenu(ManagerChangeMenuEvent e) {
         menu = e.getNewMenu();
     }
-
 }
