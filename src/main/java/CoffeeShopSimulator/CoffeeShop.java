@@ -40,10 +40,10 @@ public class CoffeeShop implements ICoffeeShop {
      * The eventBus is needed so that everyone that is
      * in the coffee shop can listen to each other
      */
-    public CoffeeShop(EventBus eventBus, ILogger logger) {
-        coffeeShopEventBus = new CoffeeShopEventBus(eventBus, logger);
-        eventBus.register(coffeeShopEventBus);
-        eventBus.register(this);
+    public CoffeeShop() {
+        coffeeShopEventBus = CoffeeShopEventBus.getInstance();
+        coffeeShopEventBus.getEventBus().register(coffeeShopEventBus);
+        coffeeShopEventBus.getEventBus().register(this);
 
 
         setup();
